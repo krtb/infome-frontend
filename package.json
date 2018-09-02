@@ -6,7 +6,9 @@
     "ajv": "^6.0.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
     "react-scripts": "1.1.5",
+    "redux": "^4.0.0",
     "semantic-ui-react": "^0.82.3"
   },
   "scripts": {
