@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, Form, Segment } from 'semantic-ui-react'
 
 
@@ -11,7 +12,7 @@ class LogIn extends Component {
                         <Form.Input fluid label='First name' placeholder='First name' />
                         <Form.Input fluid label='Last name' placeholder='Last name' />
                     </Form.Group>
-                    <Button type='submit'>Submit</Button>
+                    <Link to="/searchbills"><Button type='submit'>Submit</Button></Link>
                 </Form>
             </Segment>
         );
