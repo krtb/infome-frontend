@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-import HeaderImgContainer from './HeaderImgContainer'
-import '../stylesheets/App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import LandingPageContainer from './LandingPageContainer'
+import SignUp from './SignUp'
+import LogIn from './LogIn'
+// import Blurb from './Blurb'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <HeaderImgContainer/>
-      </div>
+      <Switch>
+        <Route exact path="/" component={LandingPageContainer} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/login" component={LogIn} />
+      </Switch>
     );
   }
 }
