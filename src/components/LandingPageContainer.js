@@ -5,11 +5,16 @@ import Blurb from './Blurb'
 import LoginButtons from './LoginButtons'
 
 class LandingPageContainer extends Component {
+    doThis = () => {
+        window.location = 'http://localhost:3001/api/v1/fetchbills'
+    }
+
     render() {
         return (
             <React.Fragment>
                 <Blurb />
                 <LoginButtons/>
+                <Button onClick={this.doThis} >Fetch Bills</Button>
             </React.Fragment>
         );
     }
