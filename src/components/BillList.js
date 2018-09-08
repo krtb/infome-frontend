@@ -17,8 +17,10 @@ const BillList = (props) => {
                     <Table.Row>
                         <Table.HeaderCell>Bill Number</Table.HeaderCell>
                         <Table.HeaderCell>Description</Table.HeaderCell>
-                        <Table.HeaderCell>Link to Bill</Table.HeaderCell>
+                        <Table.HeaderCell>Chamber</Table.HeaderCell>
+                        <Table.HeaderCell>PDF Link</Table.HeaderCell>
                         <Table.HeaderCell>Legislative Day</Table.HeaderCell>
+                        <Table.HeaderCell>For Bill?</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 

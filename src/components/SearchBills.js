@@ -10,7 +10,9 @@ class SearchBills extends Component {
 
     state = {
         upcoming_bill_data: [],
-        changing_upcoming_bill_data: []
+        changing_upcoming_bill_data: [],
+        isClicked: false,
+        myBillsArray: [],
     }
 
     fetchData = () => {
@@ -28,12 +30,20 @@ class SearchBills extends Component {
         this.fetchData()
     }
 
+    handleBillClick = (bill) => {
+        if(!this.state.myBillsArray.includes(bill)){
+            this.setState({
+                myBillsArray: [...this.state.myBillsArray, bill]
+            })
+        }
+    }
+
 
     render() {
         return (
             <React.Fragment>
             <MenuTabs/>
-                <BillList changUpBillData={this.state.changing_upcoming_bill_data} />
+            <BillList changUpBillData={this.state.changing_upcoming_bill_data} />
             </React.Fragment>
         );
     }
