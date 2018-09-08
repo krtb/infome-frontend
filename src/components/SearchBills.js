@@ -2,71 +2,38 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Table } from 'semantic-ui-react'
 import MenuTabs from './MenuTabs'
+import BillList from './BillList';
 
 
 
 class SearchBills extends Component {
+
+    state = {
+        upcoming_bill_data: [],
+        changing_upcoming_bill_data: []
+    }
+
+    fetchData = () => {
+        const UPCOMING_BILLS_API = 'http://localhost:3001/api/v1/bills'
+        const headers = {
+            // to add
+        }
+        return fetch(UPCOMING_BILLS_API).then(resp => resp.json()).then(data => this.setState({
+            upcoming_bill_data: data.bills,
+            changing_upcoming_bill_data: data.bills
+        }))
+    }
+
+    componentDidMount() {
+        this.fetchData()
+    }
+
+
     render() {
         return (
             <React.Fragment>
             <MenuTabs/>
-            <Table celled>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell>Bill Number</Table.HeaderCell>
-                        <Table.HeaderCell>Description</Table.HeaderCell>
-                        <Table.HeaderCell>Subject</Table.HeaderCell>
-                        <Table.HeaderCell>For Bill?</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
-
-                <Table.Body>
-                    <Table.Row>
-                        <Table.Cell>H.R.1843</Table.Cell>
-                        <Table.Cell>Clyde-Hirsch-Sowers RESPECT Act</Table.Cell>
-                        <Table.Cell >Department of Defense</Table.Cell>
-                        <Table.Cell positive>For</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>H.R.1843</Table.Cell>
-                        <Table.Cell>Clyde-Hirsch-Sowers RESPECT Act</Table.Cell>
-                        <Table.Cell>Department of Defense</Table.Cell>
-                        <Table.Cell selectable negative>
-                            <a href='#'>Against</a>
-                        </Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>H.R.1843</Table.Cell>
-                        <Table.Cell>Clyde-Hirsch-Sowers RESPECT Act</Table.Cell>
-                        <Table.Cell>Department of Defense</Table.Cell>
-                        <Table.Cell selectable negative>
-                            <a href='#'>Against</a>
-                        </Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>H.R.1843</Table.Cell>
-                        <Table.Cell>Clyde-Hirsch-Sowers RESPECT Act</Table.Cell>
-                        <Table.Cell>Department of Defense</Table.Cell>
-                        <Table.Cell positive>For</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>H.R.1843</Table.Cell>
-                        <Table.Cell>Clyde-Hirsch-Sowers RESPECT Act</Table.Cell>
-                        <Table.Cell>Department of Defense</Table.Cell>
-                        <Table.Cell selectable negative>
-                            <a href='#'>Against</a>
-                        </Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>H.R.1843</Table.Cell>
-                        <Table.Cell>Clyde-Hirsch-Sowers RESPECT Act</Table.Cell>
-                        <Table.Cell>Department of Defense</Table.Cell>
-                        <Table.Cell selectable positive>
-                            <a href='#'>For</a>
-                        </Table.Cell>
-                    </Table.Row>
-                </Table.Body>
-            </Table>
+                <BillList changUpBillData={this.state.changing_upcoming_bill_data} />
             </React.Fragment>
         );
     }

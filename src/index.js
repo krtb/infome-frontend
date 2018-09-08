@@ -5,10 +5,37 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router} from 'react-router-dom';
+// 
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import usersReducer from './reducers/usersReducer'
+import thunk from 'redux-thunk'
+// 
 
-import configureStore from './store/configureStore'
+// const inititialState = {
+//     picture: null,
+//     counter: 1,
+//     search: ''
+// }
 
-const store = configureStore()
+// function reducer(state = inititialState, action) {
+//     console.log('reducer is run', state, action);
+
+//     if(action.type === 'cat'){
+//         console.log('TRUE');
+        
+//     }
+
+//     return state
+// }
+const rootReducer = combineReducers({ usersReducer })
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+console.log( 'state inside of store' ,store.getState());
+
+// import configureStore from './store/configureStore'
+// const store = configureStore()
+
+store.dispatch({type: 'cat', payload: 'meow'})
 
 ReactDOM.render(
     <Provider store={store}>
