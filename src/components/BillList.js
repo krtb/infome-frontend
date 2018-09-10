@@ -4,10 +4,18 @@ import { Table } from 'semantic-ui-react'
 
 
 const BillList = (props) => {
-    console.log(props);
-    let renderData = props.changUpBillData.map((one)=>{
-        return <Bill key={one.id}  one={one} />
-    })
+    // if(props.changUpBillData){
+    //     let renderData = props.changUpBillData.map((one) => {
+    //         return <Bill key={one.id} one={one} />
+    //     })
+    // }
+
+    const renderDataNow = () => {
+
+            return props.changUpBillData.map((one) => {
+                return <Bill key={one.id} one={one} />
+            })
+    }
 
 
     return (
@@ -25,7 +33,7 @@ const BillList = (props) => {
                 </Table.Header>
 
                 <Table.Body>
-                    {renderData}
+                    {renderDataNow()}
                 </Table.Body>
             </Table>
         </React.Fragment>

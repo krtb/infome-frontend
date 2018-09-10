@@ -1,16 +1,15 @@
-export const loginUser = (username, password) => {
+export const loginUser = (name, password) => {
     return dispatch => {
         dispatch(authenticatingUser())
-        fetch('http://localhost:3000/api/v1/login', {
+        fetch('http://localhost:3001/api/v1/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Accept: 'application/json'
+                'Accept': 'application/json'
             },
-            body: JSON.stringify({ user: { username, password } })
+            body: JSON.stringify({ user: { name, password } })
         })
             .then(response => response.json())
-            // {user: {}, jwt: 'aaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccc'}
             .then(({ user, jwt }) => {
                 localStorage.setItem('jwt', jwt)
                 dispatch(setCurrentUser(user))
@@ -21,10 +20,10 @@ export const loginUser = (username, password) => {
 export const fetchCurrentUser = () => {
     // takes the token in localStorage and finds out who it belongs to
     return dispatch => {
-        fetch('http://localhost:3000/api/v1/profile', {
+        fetch('http://localhost:3001/api/v1/profile', {
             method: 'GET',
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('jwt')}`
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`
             }
         })
             .then(response => response.json())

@@ -5,6 +5,10 @@ import { Menu } from 'semantic-ui-react'
 export default class MenuTabs extends Component {
     state = {}
 
+    handleLogOut = () => {
+        localStorage.clear()
+    }
+
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     render() {
@@ -46,7 +50,7 @@ export default class MenuTabs extends Component {
                     to='/'
                     name='log-out'
                     active={activeItem === 'log-out'}
-                    onClick={this.handleItemClick}
+                    onClick={this.handleLogOut}
                 >
                    Log Out
         </Menu.Item>

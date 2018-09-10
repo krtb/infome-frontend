@@ -1,4 +1,6 @@
-import { /* your type here, CHANGE_MESSAGE */ } from './types'
+export * from './user'
+
+// import { /* your type here, CHANGE_MESSAGE */ } from './types'
 
 // Define and export your action creators here
 // EXAMPLE:
