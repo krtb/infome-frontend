@@ -4,14 +4,15 @@ import './stylesheets/index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router, withRouter} from 'react-router-dom';
+import rootReducer from './reducers/index.js'
 // 
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import usersReducer from './reducers/usersReducer'
 import thunk from 'redux-thunk'
+import withAuth from './hocs/withAuth'
 // 
-
 // const inititialState = {
 //     picture: null,
 //     counter: 1,
@@ -28,14 +29,16 @@ import thunk from 'redux-thunk'
 
 //     return state
 // }
-const rootReducer = combineReducers({ usersReducer })
+// const rootReducer = combineReducers({ usersReducer })
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
-console.log( 'state inside of store' ,store.getState());
+console.log( 'state inside of store', store.getState());
 
 // import configureStore from './store/configureStore'
 // const store = configureStore()
 
-store.dispatch({type: 'cat', payload: 'meow'})
+// store.dispatch({type: 'cat', payload: 'meow'})
+
+const AuthedApp = withAuth(App);
 
 ReactDOM.render(
     <Provider store={store}>

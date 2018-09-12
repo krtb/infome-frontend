@@ -1,15 +1,15 @@
 import React from 'react';
 import Bill from './Bill'
 import { Table } from 'semantic-ui-react'
-import PositiveBill from './PositiveBill'
+import NegativeBill from './NegativeBill'
 
 
 
-const SavedBillsTable = (props) => {
+const SavedNegativeBills = (props) => {
 
-    const myPostiveBillsArray = () => {
-        return props.myBillsArray.map((one) => {
-            return <PositiveBill key={one.id} one={one} />
+    const myNegativeBillsArray = () => {
+        return props.myNegativeArray.map((one) => {
+            return <NegativeBill key={one.id} one={one} />
         })
     }
 
@@ -23,12 +23,12 @@ const SavedBillsTable = (props) => {
                         <Table.HeaderCell>Chamber</Table.HeaderCell>
                         <Table.HeaderCell>PDF Link</Table.HeaderCell>
                         <Table.HeaderCell>Legislative Day</Table.HeaderCell>
-                        <Table.HeaderCell>For Bill?</Table.HeaderCell>
+                        <Table.HeaderCell>Delete</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
-                
+
                 <Table.Body>
-                {myPostiveBillsArray()}
+                    {myNegativeBillsArray()}
                 </Table.Body>
 
             </Table>
@@ -36,4 +36,4 @@ const SavedBillsTable = (props) => {
     );
 }
 
-export default SavedBillsTable;
+export default SavedNegativeBills;

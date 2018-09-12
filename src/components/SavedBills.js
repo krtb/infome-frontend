@@ -5,21 +5,24 @@ import MenuTabs from './MenuTabs'
 import SavedBillPositiveHeader from './SavedBillPositiveHeader';
 import SavedBillsNegativeHeader from './SavedBillsNegativeHeader';
 import SavedBillsTable from './SavedBillsTable';
+// 
+import SavedNegativeBillsTable from './SavedNegativeBillsTable'
 
 
+class SavedBills extends Component {
 
-class SearchPage extends Component {
+
     render() {
         return (
             <React.Fragment>
                 <MenuTabs />
-                <SavedBillPositiveHeader />
-                <SavedBillsTable/>
-                <SavedBillsNegativeHeader />
-                <SavedBillsTable />
+                <SavedBillPositiveHeader/>
+                <SavedBillsTable myBillsArray={this.props.myBillsArray}/>
+                <SavedBillsNegativeHeader/>
+                <SavedNegativeBillsTable myNegativeArray={this.props.myNegativeArray}/>
             </React.Fragment>
         );
     }
 }
 
-export default SearchPage;
+export default SavedBills;

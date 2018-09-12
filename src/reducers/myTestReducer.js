@@ -3,7 +3,10 @@ import { /* your type here, CHANGE_MESSAGE */ } from '../actions/types'
 
 
 const initialState = {
-    exampleMessage: 'Hello World'
+    upcoming_bill_data: [],
+    changing_upcoming_bill_data: [],
+    isClicked: false,
+    myBillsArray: [],
 }
 
 // returns an object

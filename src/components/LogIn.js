@@ -22,7 +22,7 @@ class LogIn extends Component {
 
     render() {
         return this.props.loggedIn ? (
-            <Redirect to="/searchbills" />
+            <Redirect to="/savedbills" />
         ) : (
             <Segment inverted>
                 <Form onSubmit={this.handleLoginSubmit} inverted>
