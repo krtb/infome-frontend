@@ -16,29 +16,49 @@ const token = localStorage.getItem('jwt')
 class App extends Component {
 
 
-  fetchAllBillsInitially = () => {
-    const token = localStorage.getItem('jwt')
+  // componentDidMount() {
+  //   this.fetchAllBillsInitially()
+  // }
 
-    if (token){
-      const fetchObject = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'Application/json',
-          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
-        }
-      }
-      fetch('http://localhost:3001/api/v1/fetchbills', fetchObject).then(resp => resp.json()).then(data => console.log(data))
-    }
-  }
+  // fetchAllBillsInitially = () => {
+  //   const token = localStorage.getItem('jwt')
+
+  //   if (token) {
+  //     const fetchObject = {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'Application/json',
+  //         'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+  //       }
+  //     }
+  //     fetch('http://localhost:3001/api/v1/fetchbills', fetchObject).then(resp => resp.json()).then(data => {
+  //       this.setState({
+  //         changing_upcoming_bill_data: data.results[0].bills
+  //       })
+  //     })
+  //   }
+  // }
 
   // testFetch = () => {
 
   // }
 
-  componentDidMount() {
-    this.fetchAllBillsInitially()
-    this.fetchData()
-   }
+  // componentDidMount() {
+  //   this.fetchAllBillsInitially()
+  //  }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if(nextState.upcoming_bill_data.length !== 0){
+  //     return false
+  //   } else {
+  //     return true
+  //   }
+  // }
+  
+  // componentDidUpdate() {
+  //   console.log("true!");
+  //   this.fetchData()
+  // }
 
 
   // ---------
@@ -51,23 +71,22 @@ class App extends Component {
     myNegativeArray: [],
   }
 
-  fetchData = () => {
-    if (token) {
-      const UPCOMING_BILLS_API = 'http://localhost:3001/api/v1/bills'
-      const fetchObject = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'Application/json',
-          'Authorization': `Bearer ${token}`
-        }
-      }
+  //   if (token) {
+  //     const UPCOMING_BILLS_API = 'http://localhost:3001/api/v1/bills'
+  //     const fetchObject = {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'Application/json',
+  //         'Authorization': `Bearer ${token}`
+  //       }
+  //     }
 
-      return fetch(UPCOMING_BILLS_API, fetchObject).then(resp => resp.json()).then(data => this.setState({
-        upcoming_bill_data: data.bills,
-        changing_upcoming_bill_data: data.bills
-      }))
-    }
-  }
+  //     return fetch(UPCOMING_BILLS_API, fetchObject).then(resp => resp.json()).then(data => this.setState({
+  //       upcoming_bill_data: data.bills,
+  //       changing_upcoming_bill_data: data.bills
+  //     }))
+  //   }
+  // }
 
 
   handleBillClick = (bill) => {

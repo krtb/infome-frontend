@@ -2,8 +2,10 @@ import React from 'react';
 
 const Blurb = () => {
     return (
-        <div>
-            Here is some text that I would want to write about my App.
+        <div className="main-background">
+            <div className="hero-text">
+                <h1 id="my-title">InforME</h1>
+            </div>
         </div>
     );
 }

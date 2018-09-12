@@ -1,8 +1,8 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-}
+} */
 
 #smiley{
     font-size: 50px;
@@ -15,11 +15,15 @@ i.far.fa-file-pdf {
 
 /* below is my new CSS code, above was boilerplate react css */
 
-/* body, html {
+body, html {
     height: 100%;
 }
 
-.main-background {
+/* body {
+
+} */
+
+/* .main-background {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/leaders.jpg");
 
     height: 50%;
@@ -31,6 +35,7 @@ i.far.fa-file-pdf {
     margin: 0;
     padding: 0;
 }
+*/
 
 .hero-text {
     text-align: center;
@@ -39,4 +44,60 @@ i.far.fa-file-pdf {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-} */
+}
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/leaders.jpg");
+    background-size: cover;
+    /* height: 50%; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90vh;
+    align-items: center;
+    background-size: cover;
+    /* height: 50%; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin: 0;
+    padding: 0; 
+}
+
+.ui.inverted.segment, .ui.primary.inverted.segment{
+    width: 30%;
+}
+
+.ui.padded.segment {
+    width: 200px;
+}
+
+#my-title {
+    font-size: 100px;
+}
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child{
+    margin-bottom: 150%;
+}
+
+.button-holder {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

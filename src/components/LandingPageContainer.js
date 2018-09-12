@@ -9,10 +9,10 @@ class LandingPageContainer extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <Blurb />
+            <div className="landing">
+                <Blurb/>
                 <LoginButtons/>
-            </React.Fragment>
+            </div>
         );
     }
 }

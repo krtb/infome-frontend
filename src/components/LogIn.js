@@ -24,7 +24,8 @@ class LogIn extends Component {
         return this.props.loggedIn ? (
             <Redirect to="/savedbills" />
         ) : (
-            <Segment inverted>
+            <div className="login-page">
+                    <Segment inverted>
                 <Form onSubmit={this.handleLoginSubmit} inverted>
                     <Form.Group widths='equal'>
                         <Form.Input fluid label='User Name' placeholder='User Name'
@@ -38,9 +39,12 @@ class LogIn extends Component {
                             value={this.state.password}
                         />
                     </Form.Group>
-                    <Button type='submit'>Submit</Button>
+                        <div className="button-holder">
+                            <Button type='submit'>Submit</Button>
+                        </div>
                 </Form>
             </Segment>
+            </div>
         );
     }
 }
