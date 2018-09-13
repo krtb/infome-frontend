@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Table } from 'semantic-ui-react'
 import MenuTabs from './MenuTabs'
 import BillList from './BillList';
+import SearchBar from './SearchBar'
 
 const token = localStorage.getItem('jwt')
 
@@ -50,11 +51,30 @@ class SearchBills extends Component {
             }
             fetch('http://localhost:3001/api/v1/fetchbills', fetchObject).then(resp => resp.json()).then(data=> {
                 this.setState({
+                    upcoming_bill_data: data.results[0].bills,
                     changing_upcoming_bill_data: data.results[0].bills
                 })
             })
         }
     }
+
+      handleSearch = (event) => {
+    this.setState({
+      searchTerm: event.target.value
+    }, () => this.filterSearch())
+  }
+
+    filterSearch = () => {
+    let findBill = this.state.upcoming_bill_data.filter((aBill) => (
+      aBill.description.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||
+      aBill.bill_number.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+      )
+    )
+
+    this.setState({
+      changing_upcoming_bill_data: findBill 
+    })
+  }
 
     // state = {
     //     upcoming_bill_data: [],
@@ -108,6 +128,9 @@ class SearchBills extends Component {
         return (
             <React.Fragment>
             <MenuTabs/>
+                <div className="my-searchbar">
+                <SearchBar handleSearch={this.handleSearch}/>
+                </div>
                 <BillList addNegaToUser={this.props.addNegaToUser} addToUser={this.props.addToUser} changeUpcomBilDat={this.state.changing_upcoming_bill_data} />
             </React.Fragment>
         );

@@ -65,9 +65,10 @@ body, html {
 
 .login-page {
     display: flex;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/blackLivesMatter.jpg");
     flex-direction: column;
     justify-content: space-around;
-    height: 90vh;
+    height: 100vh;
     align-items: center;
     background-size: cover;
     /* height: 50%; */
@@ -100,4 +101,16 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.my-searchbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+i.fas.fa-skull {
+    font-size: 20px;
 }

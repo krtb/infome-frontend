@@ -9,7 +9,7 @@ const SavedBillsTable = (props) => {
 
     const myPostiveBillsArray = () => {
         return props.myBillsArray.map((one) => {
-            return <PositiveBill key={one.id} one={one} />
+            return <PositiveBill id={one.id} frontEndDeleteButton={props.frontEndDeleteButton} key={one.id} one={one} />
         })
     }
 
@@ -23,7 +23,7 @@ const SavedBillsTable = (props) => {
                         <Table.HeaderCell>Chamber</Table.HeaderCell>
                         <Table.HeaderCell>PDF Link</Table.HeaderCell>
                         <Table.HeaderCell>Legislative Day</Table.HeaderCell>
-                        <Table.HeaderCell>For Bill?</Table.HeaderCell>
+                        <Table.HeaderCell>Delete</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 

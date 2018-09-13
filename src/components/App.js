@@ -69,6 +69,7 @@ class App extends Component {
     isClicked: false,
     myBillsArray: [],
     myNegativeArray: [],
+    searchTerm: ''
   }
 
   //   if (token) {
@@ -91,7 +92,7 @@ class App extends Component {
 
   handleBillClick = (bill) => {
     console.log(bill);
-    let my_bill = bill.id
+    let my_bill = bill.bill_id
 
     if (!this.state.myBillsArray.includes(bill)) {
       this.setState({
@@ -119,7 +120,7 @@ class App extends Component {
         'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        bill_id: bill_id,
+        bill_id: bill_id
         // user_id: this.props.user_id  
       }) 
     }
@@ -128,6 +129,46 @@ class App extends Component {
 
 
   // ------
+
+  // frontEndDeleteButton(BillId) {
+  //   console.log(BillId)
+  //   let bill_number = BillId
+  //   console.log(bill_number)
+  //   let divOne = document.getElementById(bill_number);
+  //   console.log(divOne);
+    
+  //   // divOne.style.visibility= 'hidden';
+  // }
+
+  // frontEndPosDeleteButton(item) {
+  //   this.setState(prevState => {
+  //     return {
+  //       product: {
+  //         ...myBillsArray,
+  //         ingredients: myBillsArray.filter((bill) => ingredient !== item)
+  //       }
+  //     }
+  //   });
+  // }
+
+  // handleSearch = (event) => {
+  //   console.log('handleSearch', event)
+  //   this.setState({
+  //     searchTerm: event.target.value
+  //   }, () => this.filterSearch())
+  // }
+
+  //   filterSearch = () => {
+  //     console.log('filterSearch')
+  //   let findBill = this.state.upcoming_bill_data.filter((aBill) => (
+  //     aBill.description.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+  //     )
+  //   )
+
+  //   this.setState({
+  //     changing_upcoming_bill_data: findBill 
+  //   })
+  // }
 
 
   render() {
@@ -140,12 +181,14 @@ class App extends Component {
           <SearchBills {...renderProps} 
           changeUpcomBilDat={this.state.changing_upcoming_bill_data}
           addToUser={this.handleBillClick}
-          addNegaToUser={this.handleNegativeBillClick} />
+          addNegaToUser={this.handleNegativeBillClick}
+          handleSearch={this.handleSearch} />
         )} />
         <Route path="/savedbills" render={(renderProps)=>(
           <SavedBills {...renderProps}
             myBillsArray={this.state.myBillsArray}
             myNegativeArray={this.state.myNegativeArray}
+            frontEndDeleteButton={this.frontEndDeleteButton}
           />
         )} />
         <Route path="/myprofile" component={MyProfile} />

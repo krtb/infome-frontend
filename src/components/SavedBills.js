@@ -17,7 +17,7 @@ class SavedBills extends Component {
             <React.Fragment>
                 <MenuTabs />
                 <SavedBillPositiveHeader/>
-                <SavedBillsTable myBillsArray={this.props.myBillsArray}/>
+                <SavedBillsTable frontEndDeleteButton={this.props.frontEndDeleteButton} myBillsArray={this.props.myBillsArray}/>
                 <SavedBillsNegativeHeader/>
                 <SavedNegativeBillsTable myNegativeArray={this.props.myNegativeArray}/>
             </React.Fragment>

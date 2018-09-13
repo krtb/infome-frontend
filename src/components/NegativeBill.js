@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Bill = (props) => {
     // console.log('frogs',props)
-    // const { addToUser } = props;
+    const { frontEndDeleteButton } = props;
     return (
         <Table.Row>
             <Table.Cell>{props.one.bill_number}</Table.Cell>
@@ -16,7 +16,7 @@ const Bill = (props) => {
             <Table.Cell selectable><a target="_blank" href={props.one.bill_url}><i className="far fa-file-pdf"></i></a></Table.Cell>
             <Table.Cell >{props.one.legislative_day}</Table.Cell>
             <Table.Cell selectable>
-            <a target="_blank" href={props.one.bill_url}><i className="fas fa-skull"></i></a>
+                <a onClick={() => frontEndDeleteButton()}><i className="fas fa-skull"></i></a>
             </Table.Cell>
         </Table.Row>
     );
