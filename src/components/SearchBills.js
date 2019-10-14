@@ -49,7 +49,9 @@ class SearchBills extends Component {
                     'Authorization': `Bearer ${localStorage.getItem('jwt')}`
                 }
             }
-            fetch('http://localhost:3001/api/v1/fetchbills', fetchObject).then(resp => resp.json()).then(data=> {
+            // let dev_api = 'http://localhost:3001/api/v1/fetchbills' replace with '/resources' for PROD
+
+            fetch('/resources', fetchObject).then(resp => resp.json()).then(data=> {
                 this.setState({
                     upcoming_bill_data: data.results[0].bills,
                     changing_upcoming_bill_data: data.results[0].bills
