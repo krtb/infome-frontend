@@ -112,7 +112,7 @@ class App extends Component {
   }
 
   fetchPostBill = (bill_id) => {
-    const USER_API = 'http://localhost:3001/api/v1/user_bills'
+    // const USER_API = 'http://localhost:3001/api/v1/user_bills' ---> remove hard coded path, WORK WITH HEROKU
     const fetchObj = {
       method: 'POST',
       headers: {
@@ -124,7 +124,7 @@ class App extends Component {
         // user_id: this.props.user_id  
       }) 
     }
-    return fetch(USER_API, fetchObj).then(resp=>resp.json())
+    return fetch(`/resources` , fetchObj).then(resp=>resp.json()) // ---> removed hard coded path
   } 
 
 
