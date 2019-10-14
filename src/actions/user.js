@@ -1,7 +1,9 @@
 export const loginUser = (name, password) => {
     return dispatch => {
         dispatch(authenticatingUser())
-        fetch('http://localhost:3001/api/v1/login', {
+        //let dev_api_url = 'http://localhost:3001/api/v1/login' ---> remove dev api url, for prod '/resources'
+
+        fetch('/resources', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,7 +22,9 @@ export const loginUser = (name, password) => {
 export const fetchCurrentUser = () => {
     // takes the token in localStorage and finds out who it belongs to
     return dispatch => {
-        fetch('http://localhost:3001/api/v1/profile', {
+        //let dev_api_url = 'http://localhost:3001/api/v1/profile' ---> remove dev api url, for prod '/resources'
+
+        fetch('/resources', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwt')}`
