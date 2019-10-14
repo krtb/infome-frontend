@@ -29,8 +29,9 @@ export const fetchCurrentUser = () => {
     // takes the token in localStorage and finds out who it belongs to
     return dispatch => {
         //let dev_api_url = 'http://localhost:3001/api/v1/profile' ---> remove dev api url, for prod '/resources'
+        let prod_api = 'https://infome-backend.herokuapp.com/api/v1/profile'
 
-        fetch('/resources', {
+        fetch(prod_api, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwt')}`
