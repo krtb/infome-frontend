@@ -1,3 +1,5 @@
+import { isFlowDeclaration } from "@babel/types"
+
 export const loginUser = (name, password) => {
     return dispatch => {
         dispatch(authenticatingUser())
@@ -6,16 +8,18 @@ export const loginUser = (name, password) => {
         fetch('/resources', {
             method: 'POST',
             headers: {
+                'dataType': 'json',
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify('{ "user": { name, password } }') //TODO: try to fix json bug
+            body: JSON.stringify({ user: { name, password } })
         })
             .then(response => response.json())
             .then(({ user, jwt }) => {
                 localStorage.setItem('jwt', jwt)
                 dispatch(setCurrentUser(user))
             })
+            .catch(er)
     }
 }
 
