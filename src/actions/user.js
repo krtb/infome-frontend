@@ -8,7 +8,6 @@ export const loginUser = (name, password) => {
         fetch('/resources', {
             method: 'POST',
             headers: {
-                'dataType': 'json',
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
