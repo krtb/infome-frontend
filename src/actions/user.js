@@ -9,7 +9,7 @@ export const loginUser = (name, password) => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({ user: { name, password } })
+            body: JSON.stringify('{ "user": { name, password } }') //TODO: try to fix json bug
         })
             .then(response => response.json())
             .then(({ user, jwt }) => {
