@@ -19,7 +19,9 @@ export const loginUser = (name, password) => {
                 localStorage.setItem('jwt', jwt)
                 dispatch(setCurrentUser(user))
             })
-            .catch(er)
+            .catch(error =>
+                console.log(error.message) //fix catch syntax
+            )
     }
 }
 
