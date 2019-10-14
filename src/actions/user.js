@@ -5,7 +5,7 @@ export const loginUser = (name, password) => {
         dispatch(authenticatingUser())
         //let dev_api_url = 'http://localhost:3001/api/v1/login' ---> remove dev api url, for prod '/resources'
         let prod_api ='https://infome-backend.herokuapp.com/api/v1/login'
-        fetch(prod_api, {
+        fetch('/resources', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
