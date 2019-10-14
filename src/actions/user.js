@@ -12,6 +12,7 @@ export const loginUser = (name, password) => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({ user: { name, password } })
+            // altered npm pacakage read/write 
         })
             .then(response => response.json())
             .then(({ user, jwt }) => {
