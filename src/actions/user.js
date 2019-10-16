@@ -10,7 +10,6 @@ export const loginUser = (name, password) => {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                "Access-Control-Allow-Origin": "*"
             },
             body: JSON.stringify({ user: { name, password } })
             // altered npm pacakage read/write 
@@ -36,8 +35,6 @@ export const fetchCurrentUser = () => {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
-                "Access-Control-Allow-Origin": "*"
-
             }
         })
             .then(response => response.json())
