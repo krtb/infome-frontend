@@ -4,8 +4,8 @@ export const loginUser = (name, password) => {
     return dispatch => {
         dispatch(authenticatingUser())
         //let dev_api_url = 'http://localhost:3001/api/v1/login' ---> remove dev api url, for prod '/resources'
-        let prod_api ='https://infome-backend.herokuapp.com/api/v1/login'
-        fetch('/resources', {
+         let prod_api ='https://infome-backend.herokuapp.com/api/v1/login'
+        fetch(prod_api , {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export const loginUser = (name, password) => {
                 dispatch(setCurrentUser(user))
             })
             .catch(error =>
-                console.log(error.message) //fix catch syntax
+                console.log(error.message, 'ERROR HERE!') //fix catch syntax
             )
     }
 }
