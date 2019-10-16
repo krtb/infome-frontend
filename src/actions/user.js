@@ -9,7 +9,8 @@ export const loginUser = (name, password) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                "Access-Control-Allow-Origin": "*"
             },
             body: JSON.stringify({ user: { name, password } })
             // altered npm pacakage read/write 
@@ -28,13 +29,15 @@ export const loginUser = (name, password) => {
 export const fetchCurrentUser = () => {
     // takes the token in localStorage and finds out who it belongs to
     return dispatch => {
-        //let dev_api_url = 'http://localhost:3001/api/v1/profile' ---> remove dev api url, for prod '/resources'
-        let prod_api = 'https://infome-backend.herokuapp.com/api/v1/profile'
+        let dev_api_url = 'http://localhost:3001/api/v1/profile' //---> remove dev api url, for prod '/resources'
+        //let prod_api = 'https://infome-backend.herokuapp.com/api/v1/profile'
 
-        fetch(prod_api, {
+        fetch(dev_api_url, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                "Access-Control-Allow-Origin": "*"
+
             }
         })
             .then(response => response.json())
