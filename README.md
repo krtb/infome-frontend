@@ -27,3 +27,29 @@
 
 > Information above thanks to, [usa.gov](https://www.usa.gov/how-laws-are-made)
  
+## What does this single page application allow you to do?
+* Search all bills that are newly introduced
+* Save them to your profile
+
+## Pending Features
+* Share with friends
+
+
+# Tech Stack
+Front-End
+* React.js
+* Routes.js
+* Redux
+* [Semantic UI](https://semantic-ui.com/)
+* Hosted on: [NETLIFY](https://www.netlify.com/)
+
+Back-End
+* Ruby on Rails
+* PostgreSQL
+* Hosted on: [HEROKU](https://www.heroku.com)
+
+# My API location
+* [infome-backend](https://github.com/krtb/infome-backend)
+
+## Data for this app provided by the following API
+* [ProPublica Congress API](https://www.propublica.org/datastore/api/propublica-congress-api)
