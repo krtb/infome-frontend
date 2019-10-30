@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Table } from 'semantic-ui-react'
 import MenuTabs from '../common/MenuTabs'
-import BillList from '../bill/BillList';
+import BillsList from '../bill/BillsList';
 import SearchBar from './SearchBar'
 
 const token = localStorage.getItem('jwt')
@@ -133,7 +133,7 @@ class SearchBills extends Component {
                 <div className="my-searchbar">
                 <SearchBar handleSearch={this.handleSearch}/>
                 </div>
-                <BillList addNegaToUser={this.props.addNegaToUser} addToUser={this.props.addToUser} changeUpcomBilDat={this.state.changing_upcoming_bill_data} />
+                <BillsList addNegaToUser={this.props.addNegaToUser} addToUser={this.props.addToUser} changeUpcomBilDat={this.state.changing_upcoming_bill_data} />
             </React.Fragment>
         );
     }

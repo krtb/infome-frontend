@@ -3,7 +3,7 @@ import Bill from './Bill'
 import { Table } from 'semantic-ui-react'
 
 
-const BillList = (props) => {
+const BillsList = (props) => {
     // if(props.changUpBillData){
     //     let renderData = props.changUpBillData.map((one) => {
     //         return <Bill key={one.id} one={one} />
@@ -45,4 +45,4 @@ const BillList = (props) => {
     );
 }
 
-export default BillList;
+export default BillsList;
