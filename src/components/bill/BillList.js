@@ -11,10 +11,14 @@ const BillList = (props) => {
     // }
 
     const renderDataNow = () => {
-
         return props.changeUpcomBilDat.map((one) => {
-
-            return <Bill id={one.id} addNegaToUser={props.addNegaToUser} addToUser={props.addToUser} key={one.id} one={one} />
+            return <Bill 
+                        id={one.id} 
+                        addNegaToUser={props.addNegaToUser} 
+                        addToUser={props.addToUser} 
+                        key={one.id} 
+                        one={one} 
+                    />
             })
     }
 
