@@ -5,7 +5,7 @@ import LandingPage from './common/LandingPage'
 import CreateAccountForm from './components/user/CreateAccountForm'
 import LoginForm from './components/session/LoginForm'
 import SearchBills from './components/search/SearchBills'
-import SavedBills from './components/SavedBills'
+import SavedBills from './components/bill/SavedBills'
 import UserProfile from './components/user/UserProfile'
 import usersReducer from './reducers/usersReducer';
 import withAuth from './hocs/withAuth'
