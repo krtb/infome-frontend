@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {connect} from 'react-redux'
 import LandingPage from './common/LandingPage'
 import CreateAccountForm from './components/user/CreateAccountForm'
-import LoginForm from './components/login/LoginForm'
+import LoginForm from './components/session/LoginForm'
 import SearchBills from './components/search/SearchBills'
 import SavedBills from './components/SavedBills'
 import UserProfile from './components/user/UserProfile'
