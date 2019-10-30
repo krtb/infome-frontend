@@ -6,7 +6,7 @@ import ProductiveBillHeader from '../common/ProductiveBillHeader';
 import ConcerningBillHeader from '../common/ConcerningBillHeader';
 import SavedBillsTable from './SavedBillsTable';
 
-import SavedNegativeBillsTable from './SavedNegativeBillsTable'
+import SavedNegativeBillsTable from './bill/SavedNegativeBillsTable'
 
 
 class SavedBills extends Component {
