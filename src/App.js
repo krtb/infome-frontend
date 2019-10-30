@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {connect} from 'react-redux'
 import LandingPage from './common/LandingPage'
 import SignUp from './components/SignUp'
-import LogIn from './components/LogIn'
+import LoginForm from './components/login/LoginForm'
 import SearchBills from './components/SearchBills'
 import SavedBills from './components/SavedBills'
 import MyProfile from './components/MyProfile'
@@ -177,7 +177,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/login" component={LogIn} />
+        <Route path="/login" component={LoginForm} />
         <Route path="/searchbills" render={(renderProps)=>(
           <SearchBills {...renderProps} 
           changeUpcomBilDat={this.state.changing_upcoming_bill_data}
