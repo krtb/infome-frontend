@@ -1,7 +1,7 @@
 import React from 'react';
 import Bill from './bill/Bill'
 import { Table } from 'semantic-ui-react'
-import PositiveBill from './PositiveBill'
+import PositiveBill from './bill/PositiveBill'
 
 
 
