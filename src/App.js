@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import LandingPage from './common/LandingPage'
 import SignUp from './components/SignUp'
 import LoginForm from './components/login/LoginForm'
-import SearchBills from './components/SearchBills'
+import SearchBills from './components/search/SearchBills'
 import SavedBills from './components/SavedBills'
 import MyProfile from './components/MyProfile'
 import usersReducer from './reducers/usersReducer';
