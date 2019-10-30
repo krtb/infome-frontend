@@ -8,7 +8,7 @@ const LoginButtons = () => (
             Login
     </Button></Link>
         <Divider horizontal>Or</Divider>
-        <Link to="/signup"><Button secondary fluid>
+        <Link to="/CreateAccountForm"><Button secondary fluid>
             Sign Up
     </Button></Link>
     </Segment>
