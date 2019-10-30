@@ -6,7 +6,7 @@ import SignUp from './components/SignUp'
 import LoginForm from './components/login/LoginForm'
 import SearchBills from './components/search/SearchBills'
 import SavedBills from './components/SavedBills'
-import UserProfile from './components/UserProfile'
+import UserProfile from './components/user/UserProfile'
 import usersReducer from './reducers/usersReducer';
 import withAuth from './hocs/withAuth'
 
