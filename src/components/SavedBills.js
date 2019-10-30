@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Table } from 'semantic-ui-react'
 import MenuTabs from '../common/MenuTabs'
-import ProductiveBillHeader from './ProductiveBillHeader';
-import ConcerningBillHeader from './ConcerningBillHeader';
+import ProductiveBillHeader from '../common/ProductiveBillHeader';
+import ConcerningBillHeader from '../common/ConcerningBillHeader';
 import SavedBillsTable from './SavedBillsTable';
 
 import SavedNegativeBillsTable from './SavedNegativeBillsTable'
