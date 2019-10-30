@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {connect} from 'react-redux'
 import LandingPage from './common/LandingPage'
-import SignUp from './components/SignUp'
+import CreateAccountForm from './components/user/CreateAccountForm'
 import LoginForm from './components/login/LoginForm'
 import SearchBills from './components/search/SearchBills'
 import SavedBills from './components/SavedBills'
@@ -176,7 +176,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/signup" component={SignUp} />
+        <Route path="/CreateAccountForm" component={CreateAccountForm} />
         <Route path="/login" component={LoginForm} />
         <Route path="/searchbills" render={(renderProps)=>(
           <SearchBills {...renderProps} 
