@@ -1,12 +1,12 @@
 import React from 'react';
 import { Table, Button, Checkbox, Icon } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-
+// TODO: frontEndDeleteButton => not a function
+// <a onClick={() => frontEndDeleteButton()}><i className="fas fa-skull"></i></a>
 
 const Bill = (props) => {
-    // console.log('frogs',props)
+    console.log('NEGATIVE',props)
     const { frontEndDeleteButton } = props;
     return (
         <Table.Row>
@@ -16,7 +16,7 @@ const Bill = (props) => {
             <Table.Cell selectable><a target="_blank" href={props.one.bill_url}><i className="far fa-file-pdf"></i></a></Table.Cell>
             <Table.Cell >{props.one.legislative_day}</Table.Cell>
             <Table.Cell selectable>
-                <a onClick={() => frontEndDeleteButton()}><i className="fas fa-skull"></i></a>
+                <a><i className="fas fa-skull"></i></a>
             </Table.Cell>
         </Table.Row>
     );
