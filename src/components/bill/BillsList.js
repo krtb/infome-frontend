@@ -4,12 +4,6 @@ import { Table } from 'semantic-ui-react'
 
 
 const BillsList = (props) => {
-    // if(props.changUpBillData){
-    //     let renderData = props.changUpBillData.map((one) => {
-    //         return <Bill key={one.id} one={one} />
-    //     })
-    // }
-
     const renderDataNow = () => {
         return props.changeUpcomBilDat.map((one) => {
             return <Bill 
@@ -17,7 +11,10 @@ const BillsList = (props) => {
                         addNegaToUser={props.addNegaToUser} 
                         addToUser={props.addToUser} 
                         key={one.id} 
-                        one={one} 
+                        one={one}
+                        handleBillChoiceClick={props.handleBillChoiceClick}
+                        isConcerning={props.isConcerning}
+                        isProductive={props.isProductive}
                     />
             })
     }
