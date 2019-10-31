@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {connect} from 'react-redux'
-import LandingPage from './common/LandingPage'
-import CreateAccountForm from './components/user/CreateAccountForm'
+import LandingPage from './components/common/LandingPage'
+import CreateAccountForm from './components/session/CreateAccountForm'
 import LoginForm from './components/session/LoginForm'
 import SearchBills from './components/search/SearchBills'
 import SavedBills from './components/bill/SavedBills'
-import UserProfile from './components/user/UserProfile'
+import UserProfile from './components/session/UserProfile'
 import usersReducer from './reducers/usersReducer';
 import withAuth from './hocs/withAuth'
 
