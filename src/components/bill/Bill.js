@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 const Bill = (props) => {
-    const { addToUser, addNegaToUser, isConcerning, isProductive, handleBillChoiceClick } = props;
+    const {isConcerning, isProductive, handleBillChoiceClick } = props;
     
     return (
         <Table.Row>
