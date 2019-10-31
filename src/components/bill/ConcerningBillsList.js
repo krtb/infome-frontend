@@ -6,8 +6,7 @@ import SavedBill from './SavedBill'
 
 
 const ConcerningBillsList = (props) => {
-    console.log(props.concerningBills, '>>>>>>>>> saved negative bills table <<<<<<<<<')
-
+    
     const concerningBillsArray = () => {
         return props.concerningBills.map((one) => {
             return <SavedBill key={one.id} one={one} />

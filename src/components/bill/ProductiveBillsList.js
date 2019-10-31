@@ -6,11 +6,15 @@ import SavedBill from './SavedBill'
 
 
 const ProductiveBillsList = (props) => {
-    console.log('>>>>>>>>> save bills table <<<<<<<<<')
-    
+
     const productiveBillsArray = () => {
         return props.productiveBills.map((one) => {
-            return <SavedBill id={one.id} frontEndDeleteButton={props.frontEndDeleteButton} key={one.id} one={one} />
+            return <SavedBill 
+                    id={one.id} 
+                    frontEndDeleteButton={props.frontEndDeleteButton} 
+                    key={one.id} 
+                    one={one} 
+                    />
         })
     }
 

@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 const SavedBill = (props) => {
-    console.log('>>>>>>>>> BILL CHOICE <<<<<<<<<')
-    // const { frontEndDeleteButton } = props;
     return (
         <Table.Row>
             <Table.Cell>{props.one.bill_number}</Table.Cell>

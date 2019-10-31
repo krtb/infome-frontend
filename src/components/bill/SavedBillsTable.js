@@ -1,39 +1,31 @@
-import React from 'react';
-import Bill from './Bill'
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Table } from 'semantic-ui-react'
-import PositiveBill from './PositiveBill'
 
+import MenuTabs from '../common/MenuTabs'
 
+// TODO: combine these into 'BillHeaders' component
+import ProductiveBillHeader from '../common/ProductiveBillHeader';
+import ConcerningBillHeader from '../common/ConcerningBillHeader';
+import ProductiveBillsList from './ProductiveBillsList';
+import ConcerningBillsList from './ConcerningBillsList'
 
-const SavedBillsTable = (props) => {
+class SavedBillsTable extends Component {
 
-    const myPostiveBillsArray = () => {
-        return props.productiveBills.map((one) => {
-            return <PositiveBill id={one.id} frontEndDeleteButton={props.frontEndDeleteButton} key={one.id} one={one} />
-        })
+    render() {
+
+        return (
+            <React.Fragment>
+
+                <MenuTabs />
+                <ProductiveBillHeader/>
+                <ProductiveBillsList  concerningBills={this.props.concerningBills} productiveBills={this.props.productiveBills} />
+                <ConcerningBillHeader/>
+                <ConcerningBillsList concerningBills={this.props.concerningBills} productiveBills={this.props.productiveBills}/>
+
+            </React.Fragment>
+        );
     }
-
-    return (
-        <React.Fragment>
-            <Table celled>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell>Bill Number</Table.HeaderCell>
-                        <Table.HeaderCell>Description</Table.HeaderCell>
-                        <Table.HeaderCell>Chamber</Table.HeaderCell>
-                        <Table.HeaderCell>PDF Link</Table.HeaderCell>
-                        <Table.HeaderCell>Legislative Day</Table.HeaderCell>
-                        <Table.HeaderCell>Delete</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
-                
-                <Table.Body>
-                {myPostiveBillsArray()}
-                </Table.Body>
-
-            </Table>
-        </React.Fragment>
-    );
 }
 
 export default SavedBillsTable;
