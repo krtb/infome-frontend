@@ -1,5 +1,6 @@
 # additions
 .vscode
+localStorage.js
 
 # template
 node_modules
