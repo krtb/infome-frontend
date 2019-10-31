@@ -67,8 +67,8 @@ class App extends Component {
     upcoming_bill_data: [],
     changing_upcoming_bill_data: [],
     isClicked: false,
-    myBillsArray: [],
-    myNegativeArray: [],
+    productiveBills: [],
+    concerningBills: [],
     searchTerm: ''
   }
 
@@ -94,9 +94,9 @@ class App extends Component {
     console.log(bill);
     let my_bill = bill.bill_id
 
-    if (!this.state.myBillsArray.includes(bill)) {
+    if (!this.state.productiveBills.includes(bill)) {
       this.setState({
-        myBillsArray: [...this.state.myBillsArray, bill]
+        productiveBills: [...this.state.productiveBills, bill]
       })
     }
     this.fetchPostBill(my_bill)
@@ -104,9 +104,9 @@ class App extends Component {
 
   handleNegativeBillClick = (bill) => {
     // console.log(bill);
-    if (!this.state.myNegativeArray.includes(bill)) {
+    if (!this.state.concerningBills.includes(bill)) {
       this.setState({
-        myNegativeArray: [...this.state.myNegativeArray, bill]
+        concerningBills: [...this.state.concerningBills, bill]
       })
     }
   }
@@ -145,8 +145,8 @@ class App extends Component {
   //   this.setState(prevState => {
   //     return {
   //       product: {
-  //         ...myBillsArray,
-  //         ingredients: myBillsArray.filter((bill) => ingredient !== item)
+  //         ...productiveBills,
+  //         ingredients: productiveBills.filter((bill) => ingredient !== item)
   //       }
   //     }
   //   });
@@ -187,8 +187,8 @@ class App extends Component {
         )} />
         <Route path="/savedbills" render={(renderProps)=>(
           <SavedBills {...renderProps}
-            myBillsArray={this.state.myBillsArray}
-            myNegativeArray={this.state.myNegativeArray}
+            productiveBills={this.state.productiveBills}
+            concerningBills={this.state.concerningBills}
             frontEndDeleteButton={this.frontEndDeleteButton}
           />
         )} />
