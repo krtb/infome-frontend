@@ -3,9 +3,12 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Table } from 'semantic-ui-react'
 
 import MenuTabs from '../common/MenuTabs'
+
+// TODO: combine these into 'BillHeaders' component
 import ProductiveBillHeader from '../common/ProductiveBillHeader';
 import ConcerningBillHeader from '../common/ConcerningBillHeader';
 
+// TODO: combine these into 'BillChoices' component
 import SavedBillsTable from './SavedBillsTable';
 import SavedNegativeBillsTable from './SavedNegativeBillsTable'
 
@@ -18,9 +21,9 @@ class SavedBills extends Component {
             <React.Fragment>
                 <MenuTabs />
                 <ProductiveBillHeader/>
-                <SavedBillsTable frontEndDeleteButton={this.props.frontEndDeleteButton} myBillsArray={this.props.myBillsArray}/>
+                <SavedBillsTable frontEndDeleteButton={this.props.frontEndDeleteButton} productiveBills={this.props.productiveBills}/>
                 <ConcerningBillHeader/>
-                <SavedNegativeBillsTable myNegativeArray={this.props.myNegativeArray}/>
+                <SavedNegativeBillsTable concerningBills={this.props.concerningBills}/>
             </React.Fragment>
         );
     }
