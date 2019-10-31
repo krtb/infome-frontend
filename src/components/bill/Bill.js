@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 const Bill = (props) => {
-    // console.log('frogs',props)
-    const { addToUser, addNegaToUser } = props;
+    const { addToUser, addNegaToUser, isConcerning, isProductive, handleBillChoiceClick } = props;
+    
     return (
         <Table.Row>
             <Table.Cell>{props.one.bill_number}</Table.Cell>
@@ -16,9 +16,9 @@ const Bill = (props) => {
             <Table.Cell >{props.one.legislative_day}</Table.Cell>
             <Table.Cell collapsing>
                 <Button.Group>
-                    <Button onClick={()=> addToUser(props.one)} positive  >For</Button>
+                    <Button onClick={() => handleBillChoiceClick(props.one, isProductive)} positive >For</Button>
                     <Button.Or />
-                    <Button onClick={() => addNegaToUser(props.one)} negative >Against</Button>
+                    <Button onClick={() => handleBillChoiceClick(props.one, isConcerning)} negative >Against</Button>
                 </Button.Group>
             </Table.Cell>
         </Table.Row>
