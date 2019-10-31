@@ -6,7 +6,7 @@ const initialState = {
     upcoming_bill_data: [],
     changing_upcoming_bill_data: [],
     isClicked: false,
-    myBillsArray: [],
+    productiveBills: [],
 }
 
 // returns an object

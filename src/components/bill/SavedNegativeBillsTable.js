@@ -8,7 +8,7 @@ import NegativeBill from './NegativeBill'
 const SavedNegativeBills = (props) => {
 
     const myNegativeBillsArray = () => {
-        return props.myNegativeArray.map((one) => {
+        return props.concerningBills.map((one) => {
             return <NegativeBill key={one.id} one={one} />
         })
     }

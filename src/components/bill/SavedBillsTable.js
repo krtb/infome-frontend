@@ -8,7 +8,7 @@ import PositiveBill from './PositiveBill'
 const SavedBillsTable = (props) => {
 
     const myPostiveBillsArray = () => {
-        return props.myBillsArray.map((one) => {
+        return props.productiveBills.map((one) => {
             return <PositiveBill id={one.id} frontEndDeleteButton={props.frontEndDeleteButton} key={one.id} one={one} />
         })
     }

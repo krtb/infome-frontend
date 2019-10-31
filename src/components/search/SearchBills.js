@@ -12,8 +12,8 @@ class SearchBills extends Component {
         upcoming_bill_data: [],
         changing_upcoming_bill_data: [],
         isClicked: false,
-        myBillsArray: [],
-        myNegativeArray: [],
+        productiveBills: [],
+        concerningBills: [],
         checked: false,
     }
 
@@ -82,7 +82,7 @@ class SearchBills extends Component {
     //     upcoming_bill_data: [],
     //     changing_upcoming_bill_data: [],
     //     isClicked: false,
-    //     myBillsArray: [],
+    //     productiveBills: [],
     // }
 
     // fetchData = () => {
@@ -109,9 +109,9 @@ class SearchBills extends Component {
 
     // handleBillClick = (bill) => {
     //     // console.log(bill);
-    //     if(!this.state.myBillsArray.includes(bill)){
+    //     if(!this.state.productiveBills.includes(bill)){
     //         this.setState({
-    //             myBillsArray: [...this.state.myBillsArray, bill]
+    //             productiveBills: [...this.state.productiveBills, bill]
     //         })
     //     }
     // }
