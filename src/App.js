@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {connect} from 'react-redux'
+import withAuth from './hocs/withAuth'
+
+
 import LandingPage from './components/common/LandingPage'
 import CreateAccountForm from './components/session/CreateAccountForm'
 import LoginForm from './components/session/LoginForm'
@@ -8,7 +11,6 @@ import SearchBills from './components/search/SearchBills'
 import SavedBillsTable from './components/bill/SavedBillsTable'
 import UserProfile from './components/session/UserProfile'
 import usersReducer from './reducers/usersReducer';
-import withAuth from './hocs/withAuth'
 
 const token = localStorage.getItem('jwt')
 
@@ -67,8 +69,9 @@ class App extends Component {
         <Route exact path="/" component={LandingPage} />
         <Route path="/CreateAccountForm" component={CreateAccountForm} />
         <Route path="/login" component={LoginForm} />
-        <Route path="/searchbills" render={(renderProps)=>(
 
+
+        <Route path="/searchbills" render={(renderProps)=>(
           <SearchBills {...renderProps} 
           changeUpcomBilDat={this.state.changing_upcoming_bill_data}
           addToUser={this.handleBillClick}
@@ -80,8 +83,8 @@ class App extends Component {
           />
 
         )} />
-        <Route path="/savedbills" render={(renderProps)=>(
 
+        <Route path="/savedbills" render={(renderProps)=>(
           <SavedBillsTable {...renderProps}
             handleBillChoiceClick={this.handleBillChoiceClick}
             isProductive={this.state.isProductive}
@@ -92,6 +95,7 @@ class App extends Component {
           />
 
         )} />
+
         <Route path="/myprofile" component={UserProfile} />
       </Switch>
     );
