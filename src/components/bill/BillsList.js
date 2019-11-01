@@ -10,7 +10,7 @@ const BillsList = (props) => {
                         id={one.id} 
                         addNegaToUser={props.addNegaToUser} 
                         addToUser={props.addToUser} 
-                        key={one.id} 
+                        key={one.bill_id} 
                         one={one}
                         handleBillChoiceClick={props.handleBillChoiceClick}
                         isConcerning={props.isConcerning}
