@@ -17,8 +17,6 @@ import withAuth from './hocs/withAuth'
 import './stylesheets/index.css';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
-
-
 const AuthedApp = withAuth(App);
 
 ReactDOM.render(
