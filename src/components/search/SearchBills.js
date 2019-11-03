@@ -19,6 +19,7 @@ class SearchBills extends Component {
         checked: false,
     }
 
+    // TODO: MAKE INTO REDUX
     fetchData = () => {
         if (token) {
             const UPCOMING_BILLS_API = 'http://localhost:3001/api/v1/bills'
