@@ -1,0 +1,1 @@
+export const FETCH_BILLS = 'FETCH_BILLS'
