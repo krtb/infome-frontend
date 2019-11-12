@@ -10,7 +10,7 @@ import LoginForm from './components/session/LoginForm'
 import SearchBills from './components/search/SearchBills'
 import SavedBillsTable from './components/bill/SavedBillsTable'
 import UserProfile from './components/session/UserProfile'
-import usersReducer from './reducers/usersReducer';
+import userReducer from './components/session/userReducer';
 
 const token = localStorage.getItem('jwt')
 
@@ -51,15 +51,12 @@ class App extends Component {
       this.setState({
         productiveBills: [...this.state.productiveBills, bill]
       })
-      console.log(this.state.productiveBills)
     } 
     
     if(!this.state.concerningBills.includes(bill) && choice == "isConcerning") {
       this.setState({
         concerningBills: [...this.state.concerningBills, bill]
       })
-      console.log(this.state.concerningBills)
-
     }
   }
 
