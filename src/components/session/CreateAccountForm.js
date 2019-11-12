@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, Form, Dropdown } from 'semantic-ui-react'
-import stateOptions from '../../statesDB'
+import stateOptions from './statesDB'
 
 class CreateAccountForm extends Component {
     render() {

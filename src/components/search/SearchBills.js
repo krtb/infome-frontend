@@ -13,13 +13,6 @@ const token = localStorage.getItem('jwt')
 class SearchBills extends Component {
     state = {
         changing_upcoming_bill_data: [],
-        searchTerm: '',
-        isProductive: false,
-        isConcerning: false,
-        isClicked: false,
-        productiveBills: [],
-        concerningBills: [],
-        checked: false,
     }
 
     componentDidMount() {
