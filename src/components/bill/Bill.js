@@ -9,7 +9,7 @@ const Bill = (props) => {
             <Table.Cell>{props.one.bill_number}</Table.Cell>
             <Table.Cell >{props.one.description}</Table.Cell>
             <Table.Cell >{props.one.chamber}</Table.Cell>
-            <Table.Cell selectable><a target="_blank" href={props.one.bill_url}><i className="far fa-file-pdf"></i></a></Table.Cell>
+            <Table.Cell selectable><a target="_blank" rel="noopener noreferrer" href={props.one.bill_url}><i className="far fa-file-pdf"></i></a></Table.Cell>
             <Table.Cell >{props.one.legislative_day}</Table.Cell>
             <Table.Cell collapsing>
                 <Button.Group>
