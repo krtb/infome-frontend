@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {connect} from 'react-redux'
-import withAuth from './hocs/withAuth'
+import { BrowserRouter as Route, Switch } from "react-router-dom";
 
 import LandingPage from './components/common/LandingPage'
 import CreateAccountForm from './components/session/CreateAccountForm'
@@ -9,7 +7,6 @@ import LoginForm from './components/session/LoginForm'
 import SearchBills from './components/search/SearchBills'
 import SavedBillsTable from './components/bill/SavedBillsTable'
 import UserProfile from './components/session/UserProfile'
-import userReducer from './components/session/userReducer';
 
 const token = localStorage.getItem('jwt')
 
