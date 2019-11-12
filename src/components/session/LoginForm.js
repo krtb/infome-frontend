@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { withRouter, Redirect } from 'react-router'
-import { loginUser } from '../../actions/user'
+import { loginUser } from '../session/actions'
 import { Button, Form, Segment } from 'semantic-ui-react'
 
 
