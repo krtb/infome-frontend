@@ -1,8 +1,5 @@
 import React from 'react';
-import { Table, Button, Checkbox, Icon } from 'semantic-ui-react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-
+import { Table, Button} from 'semantic-ui-react'
 
 const Bill = (props) => {
     const {isConcerning, isProductive, handleBillChoiceClick } = props;
