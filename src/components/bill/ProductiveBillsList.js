@@ -12,7 +12,7 @@ const ProductiveBillsList = (props) => {
             return <SavedBill 
                     id={one.id} 
                     frontEndDeleteButton={props.frontEndDeleteButton} 
-                    key={one.id} 
+                    key={one.bill_id} 
                     one={one} 
                     />
         })

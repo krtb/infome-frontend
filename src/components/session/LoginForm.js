@@ -49,7 +49,7 @@ class LoginForm extends Component {
     }
 }
 
-const mapStateToProps = ({ usersReducer: { authenticatingUser, failedLogin, loginError, error, user, loggedIn } }) => ({
+const mapStateToProps = ({ userReducer: { authenticatingUser, failedLogin, loginError, error, user, loggedIn } }) => ({
     authenticatingUser,
     failedLogin,
     loginError,
@@ -57,9 +57,5 @@ const mapStateToProps = ({ usersReducer: { authenticatingUser, failedLogin, logi
     loggedIn
 })
 
-export default withRouter(
-    connect(
-        mapStateToProps,
-        { loginUser }
-    )(LoginForm)
+export default withRouter(connect(mapStateToProps, { loginUser })(LoginForm)
 )

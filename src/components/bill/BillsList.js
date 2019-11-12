@@ -2,15 +2,18 @@ import React from 'react';
 import Bill from './Bill'
 import { Table } from 'semantic-ui-react'
 
+import { connect } from 'react-redux';
+import {searchTerm} from '../bill/actions'
+
 
 const BillsList = (props) => {
-    const renderDataNow = () => {
+    let renderDataNow = () => {
         return props.changeUpcomBilDat.map((one) => {
             return <Bill 
                         id={one.id} 
                         addNegaToUser={props.addNegaToUser} 
                         addToUser={props.addToUser} 
-                        key={one.id} 
+                        key={one.bill_id} 
                         one={one}
                         handleBillChoiceClick={props.handleBillChoiceClick}
                         isConcerning={props.isConcerning}
@@ -18,7 +21,6 @@ const BillsList = (props) => {
                     />
             })
     }
-
 
     return (
         <React.Fragment>
@@ -42,4 +44,10 @@ const BillsList = (props) => {
     );
 }
 
-export default BillsList;
+const mapStateToProps = (state) => {
+    return {
+        changing_upcoming_bill_data: state.getBillsReducer.changing_upcoming_bill_data,
+    }
+}
+
+export default connect(mapStateToProps, {searchTerm})(BillsList);

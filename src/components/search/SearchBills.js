@@ -5,12 +5,15 @@ import MenuTabs from '../common/MenuTabs'
 import BillsList from '../bill/BillsList';
 import SearchBar from './SearchBar'
 
+import {connect} from 'react-redux';
+import { fetchBills } from '../bill/actions'
+
 const token = localStorage.getItem('jwt')
 
 class SearchBills extends Component {
     state = {
-        upcoming_bill_data: [],
         changing_upcoming_bill_data: [],
+        searchTerm: '',
         isProductive: false,
         isConcerning: false,
         isClicked: false,
@@ -19,74 +22,25 @@ class SearchBills extends Component {
         checked: false,
     }
 
-    fetchData = () => {
-        if (token) {
-            const UPCOMING_BILLS_API = 'http://localhost:3001/api/v1/bills'
-            const fetchObject = {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'Application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            }
-            return fetch(UPCOMING_BILLS_API, fetchObject).then(resp => resp.json()).then(data => this.setState({
-                upcoming_bill_data: data.bills,
-                changing_upcoming_bill_data: data.bills
-            }) )
-        }
-    }
-
     componentDidMount() {
-        this.fetchAllBillsInitially()
+        this.props.fetchBills()
     }
 
-    fetchAllBillsInitially = () => {
-        const token = localStorage.getItem('jwt')
-
-        if (token) {
-            const fetchObject = {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'Application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('jwt')}`
-                }
-            }
-            
-            let prod_api = 'https://infome-backend.herokuapp.com/api/v1/fetchbills'
-            fetch(prod_api, fetchObject).then(resp => resp.json()).then(data=> {
-                this.setState({
-                    upcoming_bill_data: data.results[0].bills,
-                    changing_upcoming_bill_data: data.results[0].bills
-                })
+    findBill = (bill) => {
+            this.setState({ 
+                changing_upcoming_bill_data: bill 
             })
-        }
     }
 
-      handleSearch = (event) => {
-    this.setState({
-      searchTerm: event.target.value
-    }, () => this.filterSearch())
-  }
-
-    filterSearch = () => {
-    let findBill = this.state.upcoming_bill_data.filter((aBill) => (
-      aBill.description.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||
-      aBill.bill_number.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-      )
-    )
-
-    this.setState({
-      changing_upcoming_bill_data: findBill 
-    })
-  }
     render() {
+        console.log(this.state.changing_upcoming_bill_data, 'PROPS DATA')
 
         return (
 
             <React.Fragment>
             <MenuTabs/>
                 <div className="my-searchbar">
-                <SearchBar handleSearch={this.handleSearch}/>
+                <SearchBar findBill={this.findBill} />
                 </div>
                 <BillsList handleBillChoiceClick={this.props.handleBillChoiceClick} isConcerning={this.props.isConcerning} isProductive={this.props.isProductive}  addNegaToUser={this.props.addNegaToUser} addToUser={this.props.addToUser} changeUpcomBilDat={this.state.changing_upcoming_bill_data} />
             </React.Fragment>
@@ -94,4 +48,4 @@ class SearchBills extends Component {
     }
 }
 
-export default SearchBills;
+export default connect(null, {fetchBills})(SearchBills);

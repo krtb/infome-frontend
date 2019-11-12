@@ -1,4 +1,4 @@
-const defaultState = {
+const initialState = {
     user: null,
     loggedIn: false,
     authenticatingUser: false,
@@ -6,16 +6,26 @@ const defaultState = {
     error: null
 }
 
-const usersReducer = (state = defaultState, action) => {
+const userReducer = (state = initialState, action) => {
     switch (action.type) {
-     
+
         case 'SET_CURRENT_USER':
-            //action.payload {username: 'Chandler Bing', bio: 'my user bio', avatar: 'some image url'}
-            return { ...state, user: action.payload, loggedIn: true, authenticatingUser: false }
+            return { 
+                ...state, 
+                user: action.payload, 
+                loggedIn: true, 
+                authenticatingUser: false
+            }
         case 'AUTHENTICATING_USER':
-            return { ...state, authenticatingUser: true }
+            return { 
+                ...state, 
+                authenticatingUser: true 
+            }
         case 'AUTHENTICATED_USER':
-            return { ...state, authenticatingUser: false }
+            return { 
+                ...state, 
+                authenticatingUser: false 
+            }
         case 'FAILED_LOGIN':
             return {
                 ...state,
@@ -28,4 +38,4 @@ const usersReducer = (state = defaultState, action) => {
     }
 }
 
-export default usersReducer
+export default userReducer
