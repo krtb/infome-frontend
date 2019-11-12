@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import withAuth from './hocs/withAuth'
 
 import App from './App';
-import './stylesheets/index.css';
+import './index.css';
 
 // import { composeWithDevTools } from 'redux-devtools-extension'
 // import { createStore, combineReducers, applyMiddleware } from 'redux'
