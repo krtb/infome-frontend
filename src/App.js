@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {connect} from 'react-redux'
 import withAuth from './hocs/withAuth'
 
-
 import LandingPage from './components/common/LandingPage'
 import CreateAccountForm from './components/session/CreateAccountForm'
 import LoginForm from './components/session/LoginForm'
