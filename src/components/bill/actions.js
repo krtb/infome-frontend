@@ -1,6 +1,6 @@
 import getAllBills from '../apis/infomeAPI'
-import { FETCH_BILLS } from './types'
-import { SEARCH } from '../search/types';
+import { FETCH_BILLS, SEARCH } from './types'
+
 
 export const fetchBills = () => async dispatch => {
     const response = await getAllBills.get('/fetchbills');
