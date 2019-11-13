@@ -1,5 +1,4 @@
 import React from 'react';
-import Bill from './Bill'
 import { Table } from 'semantic-ui-react'
 import SavedBill from './SavedBill'
 

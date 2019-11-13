@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Table } from 'semantic-ui-react'
 
 import MenuTabs from '../common/MenuTabs'
 

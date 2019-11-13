@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Table } from 'semantic-ui-react'
 import MenuTabs from '../common/MenuTabs'
 import BillsList from '../bill/BillsList';
 import SearchBar from './SearchBar'
@@ -8,7 +6,7 @@ import SearchBar from './SearchBar'
 import {connect} from 'react-redux';
 import { fetchBills } from '../bill/actions'
 
-const token = localStorage.getItem('jwt')
+// const token = localStorage.getItem('jwt')
 
 class SearchBills extends Component {
     state = {
