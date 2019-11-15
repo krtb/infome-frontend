@@ -14,3 +14,7 @@ export const searchTerm = searchTerm => dispatch => {
         payload: searchTerm.target.value
     });
 };
+
+export const createNewBillRequest = () => async dispatch => {
+    
+}
