@@ -15,6 +15,19 @@ export const searchTerm = searchTerm => dispatch => {
     });
 };
 
-export const createNewBillRequest = () => async dispatch => {
-    
-}
+// export const createNewBillRequest = () => async dispatch => {
+//     //TODO: add fetch of api
+
+//     let prod_api = 'https://infome-backend.herokuapp.com/api/v1/user_bills'
+//     const fetchObj = {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'Application/json',
+//             'Authorization': `Bearer ${token}`
+//         },
+//         body: JSON.stringify({
+//             bill_id: bill_id
+//         })
+//     }
+//     return fetch(prod_api, fetchObj).then(resp => resp.json()) // ---> removed hard coded path
+// }
