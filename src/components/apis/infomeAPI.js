@@ -1,7 +1,9 @@
 import axios from 'axios'; 
+require("dotenv").config();
+
 
 const infomeInstance = axios.create({
-    baseURL: 'https://infome-backend.herokuapp.com/api/v1'
+    baseURL: `process.env.REACT_APP_BACKEND_HEROKU_URL`
 });
 
 infomeInstance.defaults.headers.common['Content-Type'] = 'Application/json'
