@@ -36,3 +36,5 @@ chrome-user-data
 *.sublime-workspace
 .idea
 *.iml
+# Local Netlify folder
+.netlify
