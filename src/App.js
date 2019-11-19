@@ -25,8 +25,10 @@ class App extends Component {
   }
 
   fetchPostBill = (bill_id) => {
+    
     let prod_api = 'https://infome-backend.herokuapp.com/api/v1/user_bills'
-    const fetchObj = {
+
+    let fetchObj = {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/json',
