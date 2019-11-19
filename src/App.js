@@ -42,6 +42,7 @@ class App extends Component {
   handleBillChoiceClick = (bill, choice) => {
 
     let my_bill = bill.bill_id
+    
     this.fetchPostBill(my_bill)
 
     if(!this.state.productiveBills.includes(bill) && choice === "isProductive"){
