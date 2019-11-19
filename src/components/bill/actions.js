@@ -15,6 +15,9 @@ export const searchTerm = searchTerm => dispatch => {
     });
 };
 
+// const response = await jsonPlaceholder.get('/posts');
+
+
 // export const createNewBillRequest = () => async dispatch => {
 //     //TODO: add fetch of api
 
