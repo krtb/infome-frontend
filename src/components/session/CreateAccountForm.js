@@ -4,6 +4,9 @@ import { Button, Form, Dropdown } from 'semantic-ui-react'
 import stateOptions from './statesDB'
 
 class CreateAccountForm extends Component {
+
+    
+
     render() {
         return (
             <Form>
