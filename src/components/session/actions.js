@@ -1,3 +1,4 @@
+import infoMeApi from '../apis/infomeAPI' // fetch from dev: 'http://localhost:3000/api/v1'
 import { AUTHENTICATING_USER, SET_CURRENT_USER } from './types'
 
 export const loginUser = (name, password) => {
@@ -5,7 +6,7 @@ export const loginUser = (name, password) => {
     return dispatch => {
         dispatch(authenticatingUser())
         const prod_login_endpoint = 'https://infome-backend.herokuapp.com/api/v1/login'
-        //const dev_endpoint= 'http://localhost:3001/api/v1/login' ---> remove dev api url, for prod '/resources'
+        // TODO:const dev_endpoint= 'http://localhost:3001/api/v1/login' ---> remove dev api url, for prod '/resources' 
         const postFetchObject = {
             method: 'POST',
             headers: {
@@ -25,7 +26,6 @@ export const loginUser = (name, password) => {
                 console.log(error.message, 'ERROR HERE!') //fix catch syntax
             )
     }
-
 }
 
 export const authenticatingUser = () => (
