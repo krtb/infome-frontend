@@ -1,4 +1,4 @@
-import infoMeApi from '../apis/infomeAPI' // fetch from dev: 'http://localhost:3000/api/v1'
+import infoMeApi from '../apis/infomeAPI'
 import { AUTHENTICATING_USER, SET_CURRENT_USER } from './types'
 
 export const authenticatingUser = () => ({ 
