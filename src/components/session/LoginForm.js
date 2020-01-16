@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { withRouter, Redirect } from 'react-router'
+import { Redirect } from 'react-router-dom';
+
 import { loginUser } from '../session/actions'
 import { Button, Form, Segment } from 'semantic-ui-react'
 
@@ -19,10 +19,10 @@ class LoginForm extends Component {
         this.setState({ username: '', password: '' })
     }
 
-
+        
     render() {
         return this.props.loggedIn ? (
-            <Redirect to="/savedbills" />
+        <Redirect to="/savedbills" />
         ) : (
             <div className="login-page">
                     <Segment inverted>
@@ -57,5 +57,4 @@ const mapStateToProps = ({ userReducer: { authenticatingUser, failedLogin, login
     loggedIn
 })
 
-export default withRouter(connect(mapStateToProps, { loginUser })(LoginForm)
-)
+export default connect(mapStateToProps, { loginUser })(LoginForm);
