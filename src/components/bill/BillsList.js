@@ -46,7 +46,7 @@ const BillsList = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        changing_upcoming_bill_data: state.getBillsReducer.changing_upcoming_bill_data,
+        changing_upcoming_bill_data: state.billsReducer.changing_upcoming_bill_data,
     }
 }
 
