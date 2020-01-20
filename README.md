@@ -7,6 +7,28 @@
  in order to understand the information you're viewing when you
  access Infome's tools.
 
+# Tech Stack
+Front-End
+
+(front-end folder structure following [Ducks methodology for redux](https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c#.e6n2ael7q))
+
+* React.js
+* Routes.js
+* Redux
+* [Semantic UI](https://semantic-ui.com/)
+* Hosted on: [NETLIFY](https://www.netlify.com/)
+
+Back-End
+* Ruby on Rails
+* PostgreSQL
+* Hosted on: [HEROKU](https://www.heroku.com)
+
+# My API location
+* [infome-backend](https://github.com/krtb/infome-backend)
+
+## Data for this app provided by the following API
+* [ProPublica Congress API](https://www.propublica.org/datastore/api/propublica-congress-api)
+
  # How does a `bill` become a `law`?
  1. Idea!
  2. Introduced into Congress OR House of representatives
@@ -31,25 +53,5 @@
 * Search all bills that are newly introduced
 * Save them to your profile
 
-## Pending Features
+## Roadmap Features
 * Share with friends
-
-
-# Tech Stack
-Front-End
-* React.js
-* Routes.js
-* Redux
-* [Semantic UI](https://semantic-ui.com/)
-* Hosted on: [NETLIFY](https://www.netlify.com/)
-
-Back-End
-* Ruby on Rails
-* PostgreSQL
-* Hosted on: [HEROKU](https://www.heroku.com)
-
-# My API location
-* [infome-backend](https://github.com/krtb/infome-backend)
-
-## Data for this app provided by the following API
-* [ProPublica Congress API](https://www.propublica.org/datastore/api/propublica-congress-api)
