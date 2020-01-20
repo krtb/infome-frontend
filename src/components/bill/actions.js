@@ -4,7 +4,9 @@ import { FETCH_BILLS, SEARCH } from './types'
 
 export const fetchBills = () => async dispatch => {
     const response = await getAllBills.get('/fetchbills');
-    dispatch({ type: FETCH_BILLS, payload: response.data.results[0].bills})
+    const listOfBills = await response.data.results[0].bills
+    
+    dispatch({ type: FETCH_BILLS, payload: listOfBills})
 };
 
 export const searchTerm = searchTerm => dispatch => {
