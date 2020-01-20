@@ -10,6 +10,30 @@ export const setCurrentUser = userData => ({
     payload: userData
 })
 
+export const createNewUser = (name, password) => async dispatch => {
+    try {
+        // TODO: add json formatting type in object sent
+        let userObject = {
+            "user": {
+                "name": name,
+                "password": password
+            }
+        }
+
+        let axiosConfig = {
+            headers: {
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin": "*",
+            }
+        };
+        
+        infoMeApi.post('/users', userObject, axiosConfig)
+
+    } catch (error) {
+        console.log(error, "in createNewUser(), session/actions/loginUser")
+    }
+}
+
 export const loginUser = (name, password) => async dispatch => {
     try {
         dispatch(authenticatingUser())
@@ -24,7 +48,7 @@ export const loginUser = (name, password) => async dispatch => {
         dispatch(setCurrentUser(userData))
 
     } catch (error) {
-        console.log(error, "in session/actions/loginUser")
+        console.log(error, "in loginUser(), session/actions/loginUser")
     }
     // async always returns a promise, https://scotch.io/tutorials/asynchronous-javascript-using-async-await
 }
