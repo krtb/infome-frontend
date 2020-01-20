@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../src/components'
 // import withAuth from './hocs/withAuth'
 
 import LandingPage from './components/common/LandingPage'
@@ -9,8 +11,7 @@ import SearchBills from './components/search/SearchBills'
 import SavedBillsTable from './components/bill/SavedBillsTable'
 import UserProfile from './components/session/UserProfile'
 
-const token = localStorage.getItem('jwt')
-
+// const token = localStorage.getItem('jwt')
 
 class App extends Component {
   state = {
@@ -24,28 +25,36 @@ class App extends Component {
     searchTerm: ''
   }
 
-  fetchPostBill = (bill_id) => {
-    
-    let prod_api = 'https://infome-backend.herokuapp.com/api/v1/user_bills'
+  fetchPostBill = (bill) => {
+    //TODO: add new Bill class attributes, after backend API migration
+    let user_data = bill
+    JSON.stringify(user_data)
+
+    // POSTING TO BILLS
+    let dev_api = `${process.env.REACT_APP_BACKEND_DEV_API}/picked_bills`
+    let prod_api = `${process.env.REACT_APP_BACKEND_PROD_API}/picked_bills`
 
     let fetchObj = {
       method: 'POST',
       headers: {
-        'Content-Type': 'Application/json',
-        'Authorization': `Bearer ${token}`
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: JSON.stringify({
-        bill_id: bill_id
-      })
+      body: JSON.stringify(user_data)
     }
-    return fetch(prod_api, fetchObj).then(resp => resp.json()) // ---> removed hard coded path
+
+    return fetch(dev_api, fetchObj, console.log(fetchObj.body, "kkkkkkk"))
+      .then(resp => resp.json())
+      .then(resp => console.log(resp, '<============ HERE IS PARSED ANSWER'))
+      .catch((error) => {
+        console.error(error, "ERROR POSTING DATA");
+      });
   } 
+
 
   handleBillChoiceClick = (bill, choice) => {
 
-    let my_bill = bill.bill_id
-    
-    this.fetchPostBill(my_bill)
+    let chosen_bill = bill  // (Bill Object): bill.bill_id
+    this.fetchPostBill(chosen_bill)
 
     if(!this.state.productiveBills.includes(bill) && choice === "isProductive"){
       this.setState({
@@ -62,7 +71,7 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
+      <BrowserRouter>
         <Route exact path="/" component={LandingPage} />
         <Route path="/CreateAccountForm" component={CreateAccountForm} />
         <Route path="/login" component={LoginForm} />
@@ -94,9 +103,9 @@ class App extends Component {
         )} />
 
         <Route path="/myprofile" component={UserProfile} />
-      </Switch>
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+export default connect(null, actions)(App);
