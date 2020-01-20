@@ -42,7 +42,7 @@ class App extends Component {
       body: JSON.stringify(user_data)
     }
 
-    return fetch(dev_api, fetchObj, console.log(fetchObj.body, "kkkkkkk"))
+    return fetch(prod_api, fetchObj, console.log(fetchObj.body, "kkkkkkk"))
       .then(resp => resp.json())
       .then(resp => console.log(resp, '<============ HERE IS PARSED ANSWER'))
       .catch((error) => {
