@@ -15,7 +15,6 @@ import UserProfile from './components/session/UserProfile'
 
 class App extends Component {
   state = {
-    isClicked: false,
     isProductive: "isProductive",
     isConcerning: "isConcerning",
     productiveBills: [],
@@ -79,10 +78,6 @@ class App extends Component {
 
         <Route path="/searchbills" render={(renderProps)=>(
           <SearchBills {...renderProps} 
-          changeUpcomBilDat={this.state.changing_upcoming_bill_data}
-          addToUser={this.handleBillClick}
-          addNegaToUser={this.handleNegativeBillClick}
-          handleSearch={this.handleSearch} 
           handleBillChoiceClick={this.handleBillChoiceClick}
           isProductive={this.state.isProductive}
           isConcerning={this.state.isConcerning}
