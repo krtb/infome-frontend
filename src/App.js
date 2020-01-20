@@ -7,7 +7,7 @@ import * as actions from '../src/components'
 import LandingPage from './components/common/LandingPage'
 import CreateAccountForm from './components/session/CreateAccountForm'
 import LoginForm from './components/session/LoginForm'
-import SearchBills from './components/search/SearchBills'
+import SearchBills from './components/bill/SearchBills'
 import SavedBillsTable from './components/bill/SavedBillsTable'
 import UserProfile from './components/session/UserProfile'
 
