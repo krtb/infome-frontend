@@ -24,27 +24,36 @@ class LoginForm extends Component {
         return this.props.loggedIn ? (
         <Redirect to="/savedbills" />
         ) : (
+
             <div className="login-page">
-                    <Segment inverted>
+            <Segment inverted>
+
                 <Form onSubmit={this.handleLoginSubmit} inverted>
                     <Form.Group widths='equal'>
+
                         <Form.Input fluid label='User Name' placeholder='User Name'
                             name="username"
                             onChange={this.handleChange}
                             value={this.state.username}
                          />
+                         
                         <Form.Input fluid label='Password' placeholder='Password'
                             name="password" 
                             onChange={this.handleChange}
                             value={this.state.password}
                         />
+
                     </Form.Group>
-                        <div className="button-holder">
-                            <Button type='submit'>Submit</Button>
-                        </div>
+
+                    <div className="button-holder">
+                        <Button type='submit'>Submit</Button>
+                    </div>
+
                 </Form>
+
             </Segment>
             </div>
+
         );
     }
 }
