@@ -34,8 +34,8 @@ class SearchBar extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        text: state.getBillsReducer.searchTerm,
-        changing_upcoming_bill_data: state.getBillsReducer.changing_upcoming_bill_data,
+        text: state.billsReducer.searchTerm,
+        changing_upcoming_bill_data: state.billsReducer.changing_upcoming_bill_data,
     }
 }
 
