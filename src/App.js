@@ -15,17 +15,16 @@ import UserProfile from './components/session/UserProfile'
 
 class App extends Component {
   state = {
-    upcoming_bill_data: [],
-    changing_upcoming_bill_data: [],
     isClicked: false,
     isProductive: "isProductive",
     isConcerning: "isConcerning",
     productiveBills: [],
     concerningBills: [],
-    searchTerm: ''
   }
 
   fetchPostBill = (bill) => {
+    console.log('FETCH POST BILL FUNCTION');
+
     //TODO: add new Bill class attributes, after backend API migration
     let user_data = bill
     JSON.stringify(user_data)
@@ -52,7 +51,8 @@ class App extends Component {
 
 
   handleBillChoiceClick = (bill, choice) => {
-
+    console.log('HANDLE BILL CHOICE CLICK FUNCTION');
+    
     let chosen_bill = bill  // (Bill Object): bill.bill_id
     this.fetchPostBill(chosen_bill)
 
