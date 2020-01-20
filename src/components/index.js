@@ -1,2 +1,2 @@
-export { default as getBillsReducer } from './bill/getBillsReducer'
+export { default as billsReducer } from './bill/billsReducer'
 export { default as userReducer } from './session/userReducer' 
