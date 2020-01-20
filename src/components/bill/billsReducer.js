@@ -7,7 +7,7 @@ const initialState = {
     changing_upcoming_bill_data: []
 }
 
-const getBillsReducer = (state = initialState, action) => {
+const billsReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_BILLS:
             return {
@@ -27,4 +27,4 @@ const getBillsReducer = (state = initialState, action) => {
 }
 
 
-export default getBillsReducer
+export default billsReducer
