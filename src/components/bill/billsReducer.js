@@ -1,5 +1,4 @@
-import {FETCH_BILLS, SEARCH} from './types'
-
+import {FETCH_BILLS, SEARCH, FIND_BILL} from './types'
 
 const initialState = {
     searchTerm: "",
@@ -14,6 +13,11 @@ const billsReducer = (state = initialState, action) => {
                 ...state,
                 changing_upcoming_bill_data: action.payload,
                 upcoming_bill_data: action.payload,
+            }
+        case FIND_BILL:
+            return {
+                ...state,
+                changing_upcoming_bill_data: action.payload
             }
         case SEARCH:
             let text = action.payload
