@@ -1,7 +1,7 @@
 import getAllBills from '../apis/infomeAPI'
-import { FETCH_BILLS, SEARCH } from './types'
+import { FETCH_BILLS, SEARCH, FIND_BILL } from './types'
 
-
+// (used in): SearchBills
 export const fetchBills = () => async dispatch => {
     const response = await getAllBills.get('/fetchbills');
     const listOfBills = await response.data.results[0].bills
@@ -9,30 +9,32 @@ export const fetchBills = () => async dispatch => {
     dispatch({ type: FETCH_BILLS, payload: listOfBills})
 };
 
+// (used in): SearchBar
 export const searchTerm = searchTerm => dispatch => {
+
+    console.log(searchTerm.target.value, ' seachTerm action creator ');
+    
     searchTerm.preventDefault()
+
     dispatch({
         type: SEARCH,
         payload: searchTerm.target.value
     });
 };
 
-// const response = await jsonPlaceholder.get('/posts');
+// (used in): SearchBar
+export const filterText = (searchTerm, props) => async dispatch => {
 
+    let filteredText = props.upcoming_bill_data.filter((aBill) => (
 
-// export const createNewBillRequest = () => async dispatch => {
-//     //TODO: add fetch of api
+        aBill.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        aBill.bill_number.toLowerCase().includes(searchTerm.toLowerCase())
 
-//     let prod_api = 'https://infome-backend.herokuapp.com/api/v1/user_bills'
-//     const fetchObj = {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'Application/json',
-//             'Authorization': `Bearer ${token}`
-//         },
-//         body: JSON.stringify({
-//             bill_id: bill_id
-//         })
-//     }
-//     return fetch(prod_api, fetchObj).then(resp => resp.json()) // ---> removed hard coded path
-// }
+      )
+    )    
+
+    let foundBill = await filteredText
+
+    dispatch({ type: FIND_BILL, payload: foundBill })
+
+}
