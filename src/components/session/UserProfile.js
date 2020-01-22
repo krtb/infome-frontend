@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+
 import { Button, Form, Dropdown } from 'semantic-ui-react'
 import stateOptions from './statesDB'
-import MenuTabs from '../common/MenuTabs'
 
 class UserProfile extends Component {
     render() {
         return (
             <React.Fragment>
-            <MenuTabs/>
             <Form>
                 <Form.Group unstackable widths={2}>
                     <Form.Input label='User Name' placeholder='User Name' />
