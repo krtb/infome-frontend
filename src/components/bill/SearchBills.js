@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MenuTabs from '../common/MenuTabs'
 import BillsList from './BillsList';
 import SearchBar from '../search/SearchBar'
 
@@ -26,8 +25,6 @@ class SearchBills extends Component {
         return (
 
             <React.Fragment>
-
-            <MenuTabs/>
 
                 <div className="my-searchbar">
 
