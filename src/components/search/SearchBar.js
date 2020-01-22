@@ -35,8 +35,8 @@ const mapStateToProps = (state) => {
     
     return {
         text: state.billsReducer.searchTerm,
-        changing_upcoming_bill_data: state.billsReducer.changing_upcoming_bill_data,
-        upcoming_bill_data: state.billsReducer.upcoming_bill_data
+        altered_bill_list: state.billsReducer.altered_bill_list,
+        initial_bill_list: state.billsReducer.initial_bill_list
     }
 }
 

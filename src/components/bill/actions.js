@@ -25,7 +25,7 @@ export const searchTerm = searchTerm => dispatch => {
 // (used in): SearchBar
 export const filterText = (searchTerm, props) => async dispatch => {
 
-    let filteredText = props.upcoming_bill_data.filter((aBill) => (
+    let filteredText = props.initial_bill_list.filter((aBill) => (
 
         aBill.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
         aBill.bill_number.toLowerCase().includes(searchTerm.toLowerCase())

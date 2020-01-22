@@ -17,7 +17,7 @@ class SearchBills extends Component {
     onTermSubmit = async term => {
         console.log(term);
         this.setState({
-            changing_upcoming_bill_data: term,
+            altered_bill_list: term,
         })
     }
 
@@ -43,7 +43,7 @@ class SearchBills extends Component {
                     addNegaToUser={this.props.addNegaToUser} 
                     addToUser={this.props.addToUser} 
 
-                    changeUpcomBilDat={this.props.changing_upcoming_bill_data} 
+                    changeUpcomBilDat={this.props.altered_bill_list} 
                 />
 
             </React.Fragment>
@@ -54,8 +54,8 @@ class SearchBills extends Component {
 function mapStateToProps (state) {
     
     return{
-        changing_upcoming_bill_data: state.billsReducer.changing_upcoming_bill_data,
-        upcoming_bill_data: state.billsReducer.upcoming_bill_data,
+        altered_bill_list: state.billsReducer.altered_bill_list,
+        initial_bill_list: state.billsReducer.initial_bill_list,
     }
 }
 

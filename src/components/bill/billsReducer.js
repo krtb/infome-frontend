@@ -2,8 +2,8 @@ import {FETCH_BILLS, SEARCH, FIND_BILL} from './types'
 
 const initialState = {
     searchTerm: "",
-    upcoming_bill_data: [],
-    changing_upcoming_bill_data: []
+    initial_bill_list: [],
+    altered_bill_list: []
 }
 
 const billsReducer = (state = initialState, action) => {
@@ -11,13 +11,13 @@ const billsReducer = (state = initialState, action) => {
         case FETCH_BILLS:
             return {
                 ...state,
-                changing_upcoming_bill_data: action.payload,
-                upcoming_bill_data: action.payload,
+                altered_bill_list: action.payload,
+                initial_bill_list: action.payload,
             }
         case FIND_BILL:
             return {
                 ...state,
-                changing_upcoming_bill_data: action.payload
+                altered_bill_list: action.payload
             }
         case SEARCH:
             let text = action.payload
