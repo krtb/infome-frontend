@@ -7,6 +7,9 @@ import {searchTerm} from '../bill/actions'
 
 
 const BillsList = (props) => {
+    console.log(props, 'BILLS LIST');
+    
+
     let renderDataNow = () => {
         return props.changeUpcomBilDat.map((one) => {
             return <Bill 
