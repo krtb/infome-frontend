@@ -2,41 +2,42 @@ import React, { Component } from 'react'
 import { Input } from 'semantic-ui-react'
 
 import { connect } from 'react-redux';
-import {searchTerm} from '../bill/actions'
+import { searchTerm, filterText } from '../bill/actions'
 
 class SearchBar extends Component {
 
-        filterText = () => {
-            console.log(this.props.findBill, "HERE IS FILTER TEXT FUNCTION")
-            let filteredText = this.props.changing_upcoming_bill_data.filter((aBill) => (
-                aBill.description.toLowerCase().includes(this.props.text.toLowerCase()) ||
-                aBill.bill_number.toLowerCase().includes(this.props.text.toLowerCase())
-            )
-            )
-            return filteredText
-        }
+    onFormSubmit = e => {
+        e.preventDefault()
 
+        this.props.filterText(this.props.text, this.props)
+    }
 
-    render(){
+  
+    render(){      
+        
         return (
+            <form className="ui form" onSubmit={this.onFormSubmit} >
             <Input 
-                value={this.props.text} 
-                onChange={(event)=> this.props.searchTerm(event, "FIRED --------FIRED")} 
-                findbill={this.props.findBill(this.filterText())}
+                value={this.props.text || ''} 
+                onChange={this.props.searchTerm}
                 action={{color: 'teal'}} label={{ icon: 'asterisk' }} 
                 labelPosition='right corner' 
                 placeholder='Search...' 
             />
+            </form>
+
             )
     }
 }
 
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
+    
     return {
         text: state.billsReducer.searchTerm,
         changing_upcoming_bill_data: state.billsReducer.changing_upcoming_bill_data,
+        upcoming_bill_data: state.billsReducer.upcoming_bill_data
     }
 }
 
-export default connect(mapStateToProps, {searchTerm})(SearchBar)
+export default connect(mapStateToProps, {searchTerm, filterText})(SearchBar)
