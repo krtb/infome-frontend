@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu } from 'semantic-ui-react'
 
 export default class MenuTabs extends Component {
+    state = {}
 
     handleLogOut = () => {
         console.log('logout button')
