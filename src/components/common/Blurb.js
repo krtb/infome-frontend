@@ -4,7 +4,7 @@ const Blurb = () => {
     return (
         <div className="main-background">
             <div className="hero-text">
-                <h1 id="my-title">InforME</h1>
+                <h1 id="my-title">InfoMe</h1>
             </div>
         </div>
     );
