@@ -1,13 +1,13 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+import { Table } from 'semantic-ui-react';
+
 import SavedBill from './SavedBill'
-
-
 
 const ProductiveBillsList = (props) => {
 
     const productiveBillsArray = () => {
-        return props.productiveBills.map((one) => {
+        return props.productiveBillsList.map((one) => {
             return <SavedBill 
                     id={one.id} 
                     frontEndDeleteButton={props.frontEndDeleteButton} 
@@ -40,4 +40,10 @@ const ProductiveBillsList = (props) => {
     );
 }
 
-export default ProductiveBillsList;
+function mapStateToProps(state){
+    return {
+        productiveBillsList: state.billsReducer.productiveBillsList
+    }
+}
+
+export default connect(mapStateToProps, null)(ProductiveBillsList);
