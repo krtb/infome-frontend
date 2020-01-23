@@ -14,9 +14,10 @@ class SavedBillsTable extends Component {
             <React.Fragment>
 
                 <ProductiveBillHeader/>
-                <ProductiveBillsList  concerningBills={this.props.concerningBills} productiveBills={this.props.productiveBills} />
+                <ProductiveBillsList />
+                
                 <ConcerningBillHeader/>
-                <ConcerningBillsList concerningBills={this.props.concerningBills} productiveBills={this.props.productiveBills}/>
+                <ConcerningBillsList />
 
             </React.Fragment>
         );
