@@ -1,25 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { handleBillChoiceClick } from './actions';
+
 import { Table, Button} from 'semantic-ui-react'
 
-const Bill = (props) => {
-    const {isConcerning, isProductive, handleBillChoiceClick } = props;
-    
-    return (
-        <Table.Row>
-            <Table.Cell>{props.one.bill_number}</Table.Cell>
-            <Table.Cell >{props.one.description}</Table.Cell>
-            <Table.Cell >{props.one.chamber}</Table.Cell>
-            <Table.Cell selectable><a target="_blank" rel="noopener noreferrer" href={props.one.bill_url}><i className="far fa-file-pdf"></i></a></Table.Cell>
-            <Table.Cell >{props.one.legislative_day}</Table.Cell>
-            <Table.Cell collapsing>
-                <Button.Group>
-                    <Button onClick={() => handleBillChoiceClick(props.one, isProductive)} positive >For</Button>
-                    <Button.Or />
-                    <Button onClick={() => handleBillChoiceClick(props.one, isConcerning)} negative >Against</Button>
-                </Button.Group>
-            </Table.Cell>
-        </Table.Row>
-    );
+
+class Bill extends Component {
+
+    render(){
+
+        return (
+            <Table.Row>
+                <Table.Cell>{this.props.one.bill_number}</Table.Cell>
+                <Table.Cell >{this.props.one.description}</Table.Cell>
+                <Table.Cell >{this.props.one.chamber}</Table.Cell>
+
+                <Table.Cell selectable> 
+                    <a target="_blank" rel="noopener noreferrer" href={this.props.one.bill_url}>
+                    <i className="far fa-file-pdf"></i></a>
+                </Table.Cell>
+
+                <Table.Cell >{this.props.one.legislative_day}</Table.Cell>
+                <Table.Cell collapsing>
+                    <Button.Group>
+                        <Button onClick={() => this.props.handleBillChoiceClick(
+                            this.props.one, 
+                            this.props.isProductive, 
+                            this.props.productiveBillsList)} positive >For</Button>
+                        <Button.Or />
+                        <Button onClick={() => this.props.handleBillChoiceClick(
+                            this.props.one, 
+                            this.props.isConcerning, 
+                            this.props.concerningBillsList)} negative >Against</Button>
+                    </Button.Group>
+                </Table.Cell>
+            </Table.Row>
+        );
+    }
 }
 
-export default Bill;
+function maptStateToProps(state) {
+    return { 
+        isProductive: state.billsReducer.isProductive,
+        isConcerning: state.billsReducer.isConcerning,
+        productiveBillsList: state.billsReducer.productiveBillsList,
+        concerningBillsList: state.billsReducer.concerningBillsList
+    }
+}
+
+export default connect(maptStateToProps, { handleBillChoiceClick })(Bill);

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MenuTabs from '../common/MenuTabs'
 import BillsList from './BillsList';
 import SearchBar from '../search/SearchBar'
 
@@ -17,7 +16,7 @@ class SearchBills extends Component {
     onTermSubmit = async term => {
         console.log(term);
         this.setState({
-            altered_bill_list: term,
+            alteredBillList: term,
         })
     }
 
@@ -27,23 +26,14 @@ class SearchBills extends Component {
 
             <React.Fragment>
 
-            <MenuTabs/>
-
                 <div className="my-searchbar">
 
                     <SearchBar onFormSubmit={this.onTermSubmit}/>
 
                 </div>
 
-                <BillsList 
-
-                    handleBillChoiceClick={this.props.handleBillChoiceClick}
-                    isConcerning={this.props.isConcerning} 
-                    isProductive={this.props.isProductive}  
-                    addNegaToUser={this.props.addNegaToUser} 
-                    addToUser={this.props.addToUser} 
-
-                    changeUpcomBilDat={this.props.altered_bill_list} 
+                <BillsList
+                    changeUpcomBilDat={this.props.alteredBillList} 
                 />
 
             </React.Fragment>
@@ -54,8 +44,8 @@ class SearchBills extends Component {
 function mapStateToProps (state) {
     
     return{
-        altered_bill_list: state.billsReducer.altered_bill_list,
-        initial_bill_list: state.billsReducer.initial_bill_list,
+        alteredBillList: state.billsReducer.alteredBillList,
+        initialBillList: state.billsReducer.initialBillList,
     }
 }
 

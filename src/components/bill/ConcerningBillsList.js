@@ -1,15 +1,15 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react'
-import SavedBill from './SavedBill'
+import { connect } from 'react-redux';
 
-
+import { Table } from 'semantic-ui-react';
+import SavedBill from './SavedBill';
 
 const ConcerningBillsList = (props) => {
     
     const concerningBillsArray = () => {
-        return props.concerningBills.map((one) => {
-            return <SavedBill key={one.bill_id} one={one} />
-        })
+        return props.concerningBillsList.map((one) => 
+            <SavedBill key={one.bill_id} one={one} />
+        )
     }
 
     return (
@@ -35,4 +35,8 @@ const ConcerningBillsList = (props) => {
     );
 }
 
-export default ConcerningBillsList;
+function mapStateToProps(state){
+    return { concerningBillsList: state.billsReducer.concerningBillsList }
+}
+
+export default connect(mapStateToProps, null)(ConcerningBillsList);

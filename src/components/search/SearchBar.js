@@ -20,7 +20,8 @@ class SearchBar extends Component {
             <Input 
                 value={this.props.text || ''} 
                 onChange={this.props.searchTerm}
-                action={{color: 'teal'}} label={{ icon: 'asterisk' }} 
+                action={{color: 'teal'}} 
+                label={{ icon: 'asterisk' }} 
                 labelPosition='right corner' 
                 placeholder='Search...' 
             />
@@ -35,8 +36,8 @@ const mapStateToProps = (state) => {
     
     return {
         text: state.billsReducer.searchTerm,
-        altered_bill_list: state.billsReducer.altered_bill_list,
-        initial_bill_list: state.billsReducer.initial_bill_list
+        alteredBillList: state.billsReducer.alteredBillList,
+        initialBillList: state.billsReducer.initialBillList
     }
 }
 

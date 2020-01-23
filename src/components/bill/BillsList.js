@@ -6,23 +6,12 @@ import { connect } from 'react-redux';
 import {searchTerm} from '../bill/actions'
 
 
-const BillsList = (props) => {
-    console.log(props, 'BILLS LIST');
-    
+const BillsList = (props) => {    
 
     let renderDataNow = () => {
-        return props.changeUpcomBilDat.map((one) => {
-            return <Bill 
-                        id={one.id} 
-                        addNegaToUser={props.addNegaToUser} 
-                        addToUser={props.addToUser} 
-                        key={one.bill_id} 
-                        one={one}
-                        handleBillChoiceClick={props.handleBillChoiceClick}
-                        isConcerning={props.isConcerning}
-                        isProductive={props.isProductive}
-                    />
-            })
+        return props.changeUpcomBilDat.map((one) =>
+            <Bill id={one.id} key={one.bill_id} one={one}/>
+        )
     }
 
     return (
@@ -49,7 +38,7 @@ const BillsList = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        altered_bill_list: state.billsReducer.altered_bill_list,
+        alteredBillList: state.billsReducer.alteredBillList,
     }
 }
 
