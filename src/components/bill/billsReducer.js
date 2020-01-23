@@ -1,9 +1,19 @@
-import {FETCH_BILLS, SEARCH, FIND_BILL} from './types'
+import {
+    FETCH_BILLS, 
+    SEARCH, 
+    FIND_BILL, 
+    CHOSE_CONCERNING_BILL, 
+    CHOSE_PRODUCTIVE_BILL
+    } from './types';
 
 const initialState = {
-    searchTerm: "",
-    initial_bill_list: [],
-    altered_bill_list: []
+    searchTerm: '',
+    initialBillList: [],
+    alteredBillList: [],
+    isProductive: 'isProductive',
+    isConcerning: 'isConcerning',
+    productiveBillsList: [],
+    concerningBillsList: [],
 }
 
 const billsReducer = (state = initialState, action) => {
@@ -11,19 +21,29 @@ const billsReducer = (state = initialState, action) => {
         case FETCH_BILLS:
             return {
                 ...state,
-                altered_bill_list: action.payload,
-                initial_bill_list: action.payload,
+                alteredBillList: action.payload,
+                initialBillList: action.payload,
             }
         case FIND_BILL:
             return {
                 ...state,
-                altered_bill_list: action.payload
+                alteredBillList: action.payload
             }
         case SEARCH:
             let text = action.payload
             return {
                 ...state,
                 searchTerm: text,
+            }
+        case CHOSE_PRODUCTIVE_BILL:
+            return {
+                ...state,
+                productiveBillsList: [...state.productiveBillsList, action.payload]
+            }
+        case CHOSE_CONCERNING_BILL:
+            return {
+                ...state,
+                concerningBillsList: [...state.concerningBillsList, action.payload]
             }
         default:
             return state
