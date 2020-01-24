@@ -3,18 +3,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { logOutUser } from '../session/actions';
-import { Button, Dropdown, Menu } from 'semantic-ui-react';
+import { Button, Menu } from 'semantic-ui-react';
 
 class MenuTabs extends Component {
     state = { activeItem: 'home' }
-
-    // handleLogOut = () => {
-    //     // TODO: set loggedIn state to false
-    //     this.setState({
-    //         loggedIn: false
-    //     })
-    //     localStorage.clear()
-    // }
 
     renderContent = () => {
         switch (this.props.loggedIn) {
