@@ -4,7 +4,7 @@ let prodAPI = `${process.env.REACT_APP_BACKEND_PROD_API}`
 let devAPI = `${process.env.REACT_APP_BACKEND_DEV_API}`
 
 const infomeInstance = axios.create({    
-    baseURL: prodAPI
+    baseURL: devAPI
 });
 
 infomeInstance.defaults.headers.common['Content-Type'] = 'Application/json'
