@@ -9,7 +9,7 @@ import {searchTerm} from '../bill/actions'
 const BillsList = (props) => {    
 
     let renderDataNow = () => {
-        return props.changeUpcomBilDat.map((one) =>
+        return props.alteredBillList.map((one) =>
             <Bill id={one.id} key={one.bill_id} one={one}/>
         )
     }
