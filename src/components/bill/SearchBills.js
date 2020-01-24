@@ -28,13 +28,11 @@ class SearchBills extends Component {
 
                 <div className="my-searchbar">
 
-                    <SearchBar onFormSubmit={this.onTermSubmit}/>
+                    <SearchBar onFormSubmit={this.onTermSubmit} />
 
                 </div>
 
-                <BillsList
-                    changeUpcomBilDat={this.props.alteredBillList} 
-                />
+                <BillsList />
 
             </React.Fragment>
         );

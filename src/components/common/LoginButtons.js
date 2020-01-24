@@ -4,9 +4,12 @@ import { Segment, Button, Divider } from 'semantic-ui-react'
 
 const LoginButtons = () => (
     <Segment padded>
-        <Link to="/login"><Button primary fluid>
+        <Link to="/login">
+            <Button primary fluid>
             Login
-    </Button></Link>
+            </Button>
+        </Link>
+        
         <Divider horizontal>Or</Divider>
         <Link to="/CreateAccountForm"><Button secondary fluid>
             Sign Up

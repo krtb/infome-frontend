@@ -1,5 +1,5 @@
 import infoMeApi from '../apis/infomeAPI'
-import { AUTHENTICATING_USER, SET_CURRENT_USER } from './types'
+import { AUTHENTICATING_USER, SET_CURRENT_USER, LOG_OUT_USER } from './types'
 
 export const authenticatingUser = () => ({ 
     type: AUTHENTICATING_USER 
@@ -9,6 +9,12 @@ export const setCurrentUser = userData => ({
     type: SET_CURRENT_USER,
     payload: userData
 })
+
+export const logOutUser = () => async dispatch => {
+    localStorage.clear()
+
+    dispatch({ type: LOG_OUT_USER, payload: false })
+}
 
 export const loginUser = (name, password) => async dispatch => {
     try {

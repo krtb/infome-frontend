@@ -1,3 +1,5 @@
+import { LOG_OUT_USER } from './types';
+
 const initialState = {
     user: null,
     loggedIn: false,
@@ -32,6 +34,11 @@ const userReducer = (state = initialState, action) => {
                 failedLogin: true,
                 error: action.payload,
                 authenticatingUser: false
+            }
+        case LOG_OUT_USER:
+            return {
+                ...state,
+                loggedIn: action.payload
             }
         default:
             return state
