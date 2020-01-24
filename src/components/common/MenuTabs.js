@@ -20,6 +20,7 @@ export default class MenuExampleSizeSmall extends Component {
             <Menu size='small'>
                 <Menu.Item
                     name='InfoMe'
+                    as={Link}
                     to='/'
                     active={activeItem === 'home'}
                     onClick={this.handleItemClick}
