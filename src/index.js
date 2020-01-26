@@ -9,8 +9,6 @@ import './index.css';
 
 import configureStore from './store/configureStore';
 const store = configureStore()
-// import withAuth from './hocs/withAuth'
-// const AuthedApp = withAuth(App);
 
 ReactDOM.render(
     <Provider store={store}>
