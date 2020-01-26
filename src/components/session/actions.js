@@ -11,22 +11,26 @@ export const setCurrentUser = userData => ({
 })
 
 export const logOutUser = () => async dispatch => {
+    
     localStorage.clear()
-
-    dispatch({ type: LOG_OUT_USER, payload: false })
+    dispatch({ type: LOG_OUT_USER })
 }
 
 export const loginUser = (name, password) => async dispatch => {
+    
     try {
         dispatch(authenticatingUser())
 
         const data = { user: { name, password } }
 
         const response = await infoMeApi.post('/login', data)
+        
         const userJWT = await response.data.jwt
         const userData = await response.data.user
 
         localStorage.setItem('jwt', userJWT)
+        localStorage.setItem('loggedIn', 'true')
+
         dispatch(setCurrentUser(userData))
 
     } catch (error) {
