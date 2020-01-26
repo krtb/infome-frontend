@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AuthWrapper from '../../hocs/AuthWrapper';
 
 import { Button, Form, Dropdown } from 'semantic-ui-react'
 import stateOptions from './statesDB'
@@ -26,4 +27,4 @@ class UserProfile extends Component {
     }
 }
 
-export default UserProfile;
+export default AuthWrapper(UserProfile);
