@@ -1,4 +1,10 @@
-import { LOG_OUT_USER } from './types';
+import { 
+    LOG_OUT_USER,
+    AUTHENTICATING_USER,
+    AUTHENTICATED_USER,
+    SET_CURRENT_USER,
+    FAILED_LOGIN
+} from './types';
 
 const initialState = {
     user: null,
@@ -11,24 +17,23 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case 'SET_CURRENT_USER':
+        case SET_CURRENT_USER:
             return { 
                 ...state, 
                 user: action.payload, 
                 loggedIn: true, 
-                authenticatingUser: false
             }
-        case 'AUTHENTICATING_USER':
+        case AUTHENTICATING_USER:
             return { 
                 ...state, 
                 authenticatingUser: true 
             }
-        case 'AUTHENTICATED_USER':
+        case AUTHENTICATED_USER:
             return { 
                 ...state, 
                 authenticatingUser: false 
             }
-        case 'FAILED_LOGIN':
+        case FAILED_LOGIN:
             return {
                 ...state,
                 failedLogin: true,
@@ -37,8 +42,7 @@ const userReducer = (state = initialState, action) => {
             }
         case LOG_OUT_USER:
             return {
-                ...state,
-                loggedIn: action.payload
+                state
             }
         default:
             return state
