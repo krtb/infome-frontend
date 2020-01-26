@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import BillsList from './BillsList';
-import SearchBar from '../search/SearchBar'
+import AuthWrapper from '../../hocs/AuthWrapper';
+import { connect } from 'react-redux';
+import * as actions from './actions';
 
-import {connect} from 'react-redux';
-import * as actions from './actions'
+import BillsList from './BillsList';
+import SearchBar from '../search/SearchBar';
+
+
 
 // const token = localStorage.getItem('jwt')
 
@@ -47,4 +50,4 @@ function mapStateToProps (state) {
     }
 }
 
-export default connect(mapStateToProps, actions)(SearchBills);
+export default AuthWrapper(connect(mapStateToProps, actions)(SearchBills));
