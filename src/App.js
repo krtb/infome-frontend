@@ -8,9 +8,9 @@ import NotFound from './components/common/NotFound';
 // SESSION
 import CreateAccountForm from './components/session/CreateAccountForm';
 import LoginForm from './components/session/LoginForm';
-// BILL
-import SearchBills from './components/bill/SearchBills';
-import SavedBillsTable from './components/bill/SavedBillsTable';
+// BILLS
+import SearchBills from './components/bills/SearchBills';
+import SavedBillsTable from './components/bills/SavedBillsTable';
 import UserProfile from './components/session/UserProfile';
 
 class App extends Component {

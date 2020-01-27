@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Input } from 'semantic-ui-react'
 
 import { connect } from 'react-redux';
-import { searchTerm, filterText } from '../bill/actions'
+import { searchTerm, filterText } from '../bills/actions'
 
 class SearchBar extends Component {
 

@@ -3,7 +3,7 @@ import Bill from './Bill'
 import { Table } from 'semantic-ui-react'
 
 import { connect } from 'react-redux';
-import {searchTerm} from '../bill/actions'
+import {searchTerm} from '../bills/actions'
 
 
 const BillsList = (props) => {    
