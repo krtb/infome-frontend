@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { logOutUser, loginUser } from '../session/actions';
+import { logOutUser } from '../session/actions';
 import { Button, Menu } from 'semantic-ui-react';
 
 class MenuTabs extends Component {
@@ -36,8 +36,7 @@ class MenuTabs extends Component {
                         to="/login"
                         name='log-out'
                         active={this.state.activeItem === 'log-in'}
-                        // TODO: logging out user when button clicked?
-                        onClick={this.props.loginUser}
+                        onClick={this.handleItemClick}
                         key="2"
                     >
                         <Button primary>Log In
@@ -138,4 +137,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { logOutUser, loginUser})(MenuTabs);
+export default connect(mapStateToProps, { logOutUser })(MenuTabs);
