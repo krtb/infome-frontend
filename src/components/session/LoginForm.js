@@ -12,17 +12,22 @@ class LoginForm extends Component {
         password: '',
     }
 
-    handleChange = (e, { name, value }) => this.setState({ [name]: value })
+    // TODO: reformat this, check Search component
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
 
-    handleLoginSubmit = () => {
+    handleLoginSubmit = (event) => {
+        event.preventDefault()
         this.props.loginUser(this.state.username, this.state.password, this.props.history)
-        this.setState({ username: '', password: '' })
     }
 
         
     render() {
         return this.props.loggedIn ? (
-        <Redirect to="/savedbills" />
+            <Redirect to="/savedbills" />
         ) : (
 
             <div className="login-page">

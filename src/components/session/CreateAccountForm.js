@@ -15,8 +15,10 @@ class CreateAccountForm extends Component {
         political_party: ''
     }
 
-    handleChange = (e) => {        
+    handleChange = (e) => {    
+            
         const value = e.target.value
+
         this.setState({
             ...this.state,
             [e.target.name]: value

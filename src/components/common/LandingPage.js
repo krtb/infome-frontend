@@ -8,7 +8,6 @@ class LandingPageContainer extends Component {
         return (
             <div className="landing">
                 <Blurb/>
-                <LoginButtons/>
             </div>
         );
     }

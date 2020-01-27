@@ -2,27 +2,22 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { logOutUser } from '../session/actions';
-import { Button, Dropdown, Menu } from 'semantic-ui-react';
+import { logOutUser, loginUser } from '../session/actions';
+import { Button, Menu } from 'semantic-ui-react';
 
 class MenuTabs extends Component {
     state = { activeItem: 'home' }
 
-    // handleLogOut = () => {
-    //     // TODO: set loggedIn state to false
-    //     this.setState({
-    //         loggedIn: false
-    //     })
-    //     localStorage.clear()
-    // }
+    // TODO: handleItemClick() click has been removed
+    // TODO: change way we handle logging in user, causing synthetic event warnings
 
     renderContent = () => {
-        switch (this.props.loggedIn) {
-            case false:
+        
+        if(!localStorage.loggedIn) {
                 return [
 
                     
-                
+                    
                     <Menu.Item
                     as={Link}
                     to='/CreateAccountForm'
@@ -41,15 +36,15 @@ class MenuTabs extends Component {
                         to="/login"
                         name='log-out'
                         active={this.state.activeItem === 'log-in'}
-                        onClick={this.props.logOutUser}
+                        // TODO: logging out user when button clicked?
+                        onClick={this.props.loginUser}
                         key="2"
                     >
                         <Button primary>Log In
                 </Button>
                     </Menu.Item>
                     ]
-
-            default:
+                 } else {
                 return [
                 
                     <Menu.Item
@@ -93,22 +88,23 @@ class MenuTabs extends Component {
                     to='/'
                     name='log-out'
                     active={this.state.activeItem === 'log-out'}
-                    onClick={this.props.logOutUser}
                     key="4"
-
+                    onClick={this.props.logOutUser}
                 >
+
                 <Button primary>Log Out
                 </Button>
                 </Menu.Item>]
                 
+            }
+                
                 
         }
-    }
+    
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     render() {
-
         
         const { activeItem } = this.state
 
@@ -142,4 +138,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { logOutUser})(MenuTabs);
+export default connect(mapStateToProps, { logOutUser, loginUser})(MenuTabs);

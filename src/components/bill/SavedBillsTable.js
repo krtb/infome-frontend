@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AuthWrapper from '../../hocs/AuthWrapper';
 
 // TODO: combine these into 'BillHeaders' component
 import ProductiveBillHeader from '../common/ProductiveBillHeader';
@@ -24,4 +25,4 @@ class SavedBillsTable extends Component {
     }
 }
 
-export default SavedBillsTable;
+export default AuthWrapper(SavedBillsTable);

@@ -1,6 +1,6 @@
 import axios from 'axios'; 
 
-let prodAPI = `${process.env.REACT_APP_BACKEND_PROD_API}`
+let prodAPI = 'https://infome-backend.herokuapp.com/api/v1'
 let devAPI = `${process.env.REACT_APP_BACKEND_DEV_API}`
 
 const infomeInstance = axios.create({    

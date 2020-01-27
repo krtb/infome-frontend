@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
-import * as actions from '../src/components'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+// COMMON
 import MenuTabs from './components/common/MenuTabs';
-import LandingPage from './components/common/LandingPage'
-import CreateAccountForm from './components/session/CreateAccountForm'
-import LoginForm from './components/session/LoginForm'
-import SearchBills from './components/bill/SearchBills'
-import SavedBillsTable from './components/bill/SavedBillsTable'
-import UserProfile from './components/session/UserProfile'
-
-// TODO: import withAuth from './hocs/withAuth'
-// TODO: const token = localStorage.getItem('jwt')
+import LandingPage from './components/common/LandingPage';
+import NotFound from './components/common/NotFound';
+// SESSION
+import CreateAccountForm from './components/session/CreateAccountForm';
+import LoginForm from './components/session/LoginForm';
+// BILL
+import SearchBills from './components/bill/SearchBills';
+import SavedBillsTable from './components/bill/SavedBillsTable';
+import UserProfile from './components/session/UserProfile';
 
 class App extends Component {
 
@@ -23,16 +22,21 @@ class App extends Component {
 
         <MenuTabs />
 
+        <Switch>
+          
         <Route exact path="/" component={LandingPage} />
-        <Route path="/CreateAccountForm" component={CreateAccountForm} />
-        <Route path="/login" component={LoginForm} />
-        <Route path="/searchbills" component={SearchBills}/>
-        <Route path="/savedbills" component={SavedBillsTable} />
-        <Route path="/myprofile" component={UserProfile} />
+        <Route  path="/CreateAccountForm" component={CreateAccountForm} />
+        <Route  path="/login" component={LoginForm} />
+        <Route  path="/searchbills" component={SearchBills}/>
+        <Route  path="/savedbills" component={SavedBillsTable} />
+        <Route  path="/myprofile" component={UserProfile} />
+        <Route component={NotFound} />
+
+        </Switch>
 
       </BrowserRouter>
     );
   }
 }
 
-export default connect(null, actions)(App);
+export default App;
