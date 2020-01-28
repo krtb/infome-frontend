@@ -3,11 +3,16 @@ import {
     AUTHENTICATING_USER,
     AUTHENTICATED_USER,
     SET_CURRENT_USER,
-    FAILED_LOGIN
+    FAILED_LOGIN,
+    PROFILE_CHANGE,
+    DISCARD_EDIT,
+    REQUEST_EDIT
 } from './types';
 
 const initialState = {
     user: null,
+    userCopy: null,
+    requestEdit: true,
     loggedIn: false,
     authenticatingUser: false,
     failedLogin: false,
@@ -21,6 +26,8 @@ const userReducer = (state = initialState, action) => {
             return { 
                 ...state, 
                 user: action.payload, 
+                userCopy: action.payload,
+                requestEdit: false,
                 loggedIn: true, 
             }
         case AUTHENTICATING_USER:
@@ -43,6 +50,21 @@ const userReducer = (state = initialState, action) => {
         case LOG_OUT_USER:
             return {
                 state
+            }
+        case REQUEST_EDIT:
+            return {
+                ...state,
+                requestEdit: action.payload
+            }
+        case DISCARD_EDIT:
+            return {
+                ...state,
+                userCopy: {...state.user}
+            }
+        case PROFILE_CHANGE:
+            return {
+                ...state,
+                userCopy: action.payload
             }
         default:
             return state
