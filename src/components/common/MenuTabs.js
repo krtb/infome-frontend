@@ -8,8 +8,8 @@ import { Button, Menu } from 'semantic-ui-react';
 class MenuTabs extends Component {
     state = { activeItem: 'home' }
 
-    // TODO: handleItemClick() click has been removed
-    // TODO: change way we handle logging in user, causing synthetic event warnings
+    // TODO: CONSIDER MOVING TO REDUX
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     renderContent = () => {
         
@@ -100,9 +100,6 @@ class MenuTabs extends Component {
                 
         }
     
-
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
     render() {
         
         const { activeItem } = this.state
