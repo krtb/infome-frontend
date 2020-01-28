@@ -13,8 +13,6 @@ import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-
-
 const loadState = () => {
     try {
         const serializedState = localStorage.getItem('state');
