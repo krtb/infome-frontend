@@ -3,12 +3,9 @@ import AuthWrapper from '../../hocs/AuthWrapper';
 import { connect } from 'react-redux';
 import * as actions from './actions';
 
+// COMPONENTS
 import BillsList from './BillsList';
 import SearchBar from '../search/SearchBar';
-
-
-
-// const token = localStorage.getItem('jwt')
 
 class SearchBills extends Component {
 
@@ -17,7 +14,7 @@ class SearchBills extends Component {
     }
 
     onTermSubmit = async term => {
-        console.log(term);
+
         this.setState({
             alteredBillList: term,
         })
