@@ -1,3 +1,4 @@
+//TODO: TURN THIS INTO HIGHER ORDER COMPONENT
 let stateOptions = [ 
                     { key: 'AL', value: 'AL', text: 'Alabama' },
                     { key: 'AK', value: 'AK', text: 'Alaska' },
