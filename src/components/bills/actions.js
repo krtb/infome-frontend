@@ -17,8 +17,6 @@ export const fetchBills = () => async dispatch => {
 
 // (used in): SearchBar
 export const searchTerm = searchTerm => dispatch => {
-
-    console.log(searchTerm.target.value, ' seachTerm action creator ');
     
     searchTerm.preventDefault()
 
