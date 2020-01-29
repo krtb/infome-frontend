@@ -10,8 +10,9 @@ const ConcerningBillsList = (props) => {
         return props.concerningBillsList.map((one) => 
             <SavedBill 
                 key={one.bill_id} 
-                one={one} 
+                list="concerning"
                 listType={props.concerningBillsList} 
+                one={one} 
             />
         )
     }

@@ -4,7 +4,9 @@ import {
     FIND_BILL,
     DELETE_BILL,
     CHOSE_CONCERNING_BILL, 
-    CHOSE_PRODUCTIVE_BILL
+    CHOSE_PRODUCTIVE_BILL,
+    DELETE_PRODUCTIVE_BILL,
+    DELETE_CONCERNING_BILL
     } from './types';
 
 const initialState = {
@@ -46,11 +48,15 @@ const billsReducer = (state = initialState, action) => {
                 ...state,
                 concerningBillsList: [...state.concerningBillsList, action.payload]
             }
-        case DELETE_BILL:
+        case DELETE_PRODUCTIVE_BILL:
             return {
                 ...state,
                 productiveBillsList: action.payload,
-                concerningBillsList: action.payload
+            }
+        case DELETE_CONCERNING_BILL:
+            return {
+                ...state,
+                concerningBillsList: action.payload,
             }
         default:
             return state

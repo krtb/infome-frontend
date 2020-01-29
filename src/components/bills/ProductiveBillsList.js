@@ -10,6 +10,7 @@ const ProductiveBillsList = (props) => {
         return props.productiveBillsList.map((one) => {
             return <SavedBill 
                     id={one.bill_id} 
+                    list="productive"
                     // frontEndDeleteButton={props.frontEndDeleteButton} 
                     listType={props.productiveBillsList} 
                     key={one.bill_id} 

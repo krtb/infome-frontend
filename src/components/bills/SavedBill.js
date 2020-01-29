@@ -8,7 +8,7 @@ import { Table } from 'semantic-ui-react'
 const SavedBill = (props) => {
 
     let handleDeleteClick = () => {
-        props.deleteBill(props, props.one.bill_id )
+        props.deleteBill(props, props.one.bill_id, props )
     }
 
     return (

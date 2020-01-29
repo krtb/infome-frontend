@@ -5,7 +5,9 @@ import {
     FIND_BILL, 
     DELETE_BILL,
     CHOSE_PRODUCTIVE_BILL, 
-    CHOSE_CONCERNING_BILL 
+    CHOSE_CONCERNING_BILL, 
+    DELETE_PRODUCTIVE_BILL,
+    DELETE_CONCERNING_BILL
     } from './types'
 
 // (used in): SearchBills
@@ -88,12 +90,19 @@ export const handleBillChoiceClick = (pickedBill, choice, billList) => async dis
 }
 
 // DELETE a bill
-export const deleteBill = (listType, billId) => async dispatch => {
+export const deleteBill = (listType, billId, props) => async dispatch => {
+    console.log(props.list, ' LIST TYPE ')
 
     let filteredList = listType.listType.filter((singleBill)=> {
         return singleBill.bill_id !== billId
     })  
 
-    dispatch({ type: DELETE_BILL, payload: filteredList })
+    if (props.list === "productive"){
+    dispatch({ type: DELETE_PRODUCTIVE_BILL, payload: filteredList })
+    }
+
+    if (props.list === "concerning"){
+    dispatch({ type: DELETE_CONCERNING_BILL, payload: filteredList })
+    }
     
 }
