@@ -4,7 +4,7 @@ let prodAPI = 'https://infome-backend.herokuapp.com/api/v1'
 let devAPI = `${process.env.REACT_APP_BACKEND_DEV_API}`
 
 const infomeInstance = axios.create({    
-    baseURL: devAPI
+    baseURL: 'https://infome-backend.herokuapp.com/api/v1'
 });
 
 infomeInstance.defaults.headers.common['Content-Type'] = 'Application/json'
