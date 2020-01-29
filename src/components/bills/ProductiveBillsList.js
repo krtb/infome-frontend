@@ -9,8 +9,9 @@ const ProductiveBillsList = (props) => {
     const productiveBillsArray = () => {
         return props.productiveBillsList.map((one) => {
             return <SavedBill 
-                    id={one.id} 
-                    frontEndDeleteButton={props.frontEndDeleteButton} 
+                    id={one.bill_id} 
+                    // frontEndDeleteButton={props.frontEndDeleteButton} 
+                    listType={props.productiveBillsList} 
                     key={one.bill_id} 
                     one={one} 
                     />

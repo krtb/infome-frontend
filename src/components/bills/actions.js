@@ -3,6 +3,7 @@ import {
     FETCH_BILLS, 
     SEARCH, 
     FIND_BILL, 
+    DELETE_BILL,
     CHOSE_PRODUCTIVE_BILL, 
     CHOSE_CONCERNING_BILL 
     } from './types'
@@ -65,7 +66,6 @@ export const fetchPostBill = (bill) => {
 
     return fetch(prod_api, fetchObj, console.log(fetchObj.body, "kkkkkkk"))
         .then(resp => resp.json())
-        .then(resp => console.log(resp, '<============ HERE IS PARSED ANSWER'))
         .catch((error) => {
             console.error(error, "ERROR POSTING DATA");
         });
@@ -85,4 +85,15 @@ export const handleBillChoiceClick = (pickedBill, choice, billList) => async dis
     if (!getIDS.includes(pickedBill.bill_id) && choice === "isConcerning") {
         dispatch({ type: CHOSE_CONCERNING_BILL, payload: pickedBill })
     }
+}
+
+// DELETE a bill
+export const deleteBill = (listType, billId) => async dispatch => {
+
+    let filteredList = listType.listType.filter((singleBill)=> {
+        return singleBill.bill_id !== billId
+    })  
+
+    dispatch({ type: DELETE_BILL, payload: filteredList })
+    
 }

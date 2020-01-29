@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Bill from './Bill'
-import { Table } from 'semantic-ui-react'
+import { Table,
+    Grid,
+    Segment,
+    Container,
+    Header,
+    Pagination,
+    PaginationProps,
+} from 'semantic-ui-react'
 
 import { connect } from 'react-redux';
 import {searchTerm} from '../bills/actions'
@@ -32,6 +39,12 @@ const BillsList = (props) => {
                     {renderDataNow()}
                 </Table.Body>
             </Table>
+            {/* TODO: connect pagination callback to backend pages */}
+            {/* <Pagination
+                activePage={activePage}                
+                // totalPages={Math.ceil(props.alteredBillList.length / 5)}
+                onPageChange={onChange}            /> */}
+
         </React.Fragment>
     );
 }
