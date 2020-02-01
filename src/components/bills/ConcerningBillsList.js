@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Table } from 'semantic-ui-react';
+// COMPONENTS & STYLING
 import SavedBill from './SavedBill';
+import { Table } from 'semantic-ui-react';
+
 
 const ConcerningBillsList = (props) => {
     
