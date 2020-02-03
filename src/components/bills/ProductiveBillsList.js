@@ -1,22 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Table } from 'semantic-ui-react';
 
+// COMPONENTS & STYLING
 import SavedBill from './SavedBill'
+import { Table } from 'semantic-ui-react';
 
 const ProductiveBillsList = (props) => {
 
     const productiveBillsArray = () => {
-        return props.productiveBillsList.map((one) => {
-            return <SavedBill 
-                    id={one.bill_id} 
-                    list="productive"
-                    // frontEndDeleteButton={props.frontEndDeleteButton} 
-                    listType={props.productiveBillsList} 
-                    key={one.bill_id} 
-                    one={one} 
-                    />
-        })
+        return props.productiveBillsList.map((one) => 
+            <SavedBill
+                one={one}  
+                id={one.id} 
+                key={one.id} 
+                list="productive"
+                listType={props.productiveBillsList} 
+            />
+        )
     }
 
     return (
