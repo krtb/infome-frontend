@@ -18,15 +18,13 @@ const BillsList = (props) => {
         (props.page - 1) * props.itemsPerPage,
         (props.page - 1) * props.itemsPerPage + props.itemsPerPage
     )
-
-    console.log(items, 'items', props.page, 'page', props.itemsPerPage, 'items per page')
     
     let renderDataNow = () => {
         return items.map((one) =>
             <Bill id={one.id} key={one.id} one={one}/>
         )
     }
-    console.log(props.alteredBillList, 'altered bill list')
+    
     return (
         <React.Fragment>
             <Table celled>
@@ -58,7 +56,6 @@ const BillsList = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state, 'bills list state');
     
     return {
         initialBillList: state.billsReducer.initialBillList,
