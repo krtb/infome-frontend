@@ -13,13 +13,6 @@ class SearchBills extends Component {
         this.props.fetchBills()
     }
 
-    onTermSubmit = async term => {
-
-        this.setState({
-            alteredBillList: term,
-        })
-    }
-
     render() {
 
         return (
@@ -28,7 +21,7 @@ class SearchBills extends Component {
 
                 <div className="my-searchbar">
 
-                    <SearchBar onFormSubmit={this.onTermSubmit} />
+                    <SearchBar  />
 
                 </div>
 
@@ -39,12 +32,4 @@ class SearchBills extends Component {
     }
 }
 
-function mapStateToProps (state) {
-    
-    return{
-        alteredBillList: state.billsReducer.alteredBillList,
-        initialBillList: state.billsReducer.initialBillList,
-    }
-}
-
-export default AuthWrapper(connect(mapStateToProps, actions)(SearchBills));
+export default AuthWrapper(connect(null, actions)(SearchBills));
