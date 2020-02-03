@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { searchTerm, fetchBills, setPageNumInState } from '../bills/actions'
 
@@ -20,16 +20,21 @@ const BillsList = (props) => {
     )
     
     let renderDataNow = () => {
-        return items.map((one) =>
-            <Bill id={one.id} key={one.id} one={one}/>
-        )
+        return items.map((one) =>{
+            return <Bill 
+                id={one.id} 
+                key={one.bill_number} 
+                one={one}
+            />
+        })
     }
-    
+
     return (
-        <React.Fragment>
+        <Fragment>
+
             <Table celled>
                 <Table.Header>
-                    <Table.Row>
+                    <Table.Row >
                         <Table.HeaderCell>Bill Number</Table.HeaderCell>
                         <Table.HeaderCell>Description</Table.HeaderCell>
                         <Table.HeaderCell>Chamber</Table.HeaderCell>
@@ -44,14 +49,16 @@ const BillsList = (props) => {
                 </Table.Body>
             </Table>
 
+            <div style={{textAlign: 'center',}} >
             <Pagination
                 activePage={props.page}
                 totalPages={totalPages}
                 siblingRange={1}
                 onPageChange={setPageNum}        
             />
+            </div>
 
-        </React.Fragment>
+        </Fragment>
     );
 }
 

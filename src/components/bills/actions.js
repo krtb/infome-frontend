@@ -81,25 +81,25 @@ export const fetchPostBill = (bill) => {
 
 // (used in): SavedBillsTable && SearchBills
 export const handleBillChoiceClick = (pickedBill, choice, billList) => async dispatch => {
+    // TODO: fix posting to back end, not going through due to security
+   // fetchPostBill(pickedBill)
 
-    fetchPostBill(pickedBill)
-
-    let getIDS = billList.map((aBill) => aBill.bill_id)
-
-    if (!getIDS.includes(pickedBill.bill_id) && choice === "isProductive") {
+    let getIDS = billList.map((aBill) => aBill.bill_number)
+    
+    if (!getIDS.includes(pickedBill.bill_number) && choice === "isProductive") {
         dispatch({ type: CHOSE_PRODUCTIVE_BILL, payload: pickedBill })
     }
 
-    if (!getIDS.includes(pickedBill.bill_id) && choice === "isConcerning") {
+    if (!getIDS.includes(pickedBill.bill_number) && choice === "isConcerning") {
         dispatch({ type: CHOSE_CONCERNING_BILL, payload: pickedBill })
     }
 }
 
 // DELETE a bill
-export const deleteBill = (listType, billId, props) => async dispatch => {
+export const deleteBill = (listType, billNumber, props) => async dispatch => {
 
     let filteredList = listType.listType.filter((singleBill)=> {
-        return singleBill.bill_id !== billId
+        return singleBill.bill_number !== billNumber
     })  
 
     if (props.list === "productive"){
