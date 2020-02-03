@@ -65,7 +65,6 @@ const mapStateToProps = (state) => {
         alteredBillList: state.billsReducer.alteredBillList,
         page: state.billsReducer.page,
         itemsPerPage: state.billsReducer.itemsPerPage,
-        searching: state.billsReducer.searching
     }
 }
 
