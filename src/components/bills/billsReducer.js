@@ -6,7 +6,8 @@ import {
     CHOSE_CONCERNING_BILL, 
     CHOSE_PRODUCTIVE_BILL,
     DELETE_PRODUCTIVE_BILL,
-    DELETE_CONCERNING_BILL
+    DELETE_CONCERNING_BILL,
+    PAGE_CHANGE
     } from './types';
 
 const initialState = {
@@ -17,6 +18,8 @@ const initialState = {
     isConcerning: 'isConcerning',
     productiveBillsList: [],
     concerningBillsList: [],
+    itemsPerPage: 10,
+    page: 1,
 }
 
 const billsReducer = (state = initialState, action) => {
@@ -29,7 +32,8 @@ const billsReducer = (state = initialState, action) => {
             }
         case FIND_BILL:
             return {
-                ...state,
+                ...state, 
+                page: 1,
                 alteredBillList: action.payload
             }
         case SEARCH:
@@ -57,6 +61,11 @@ const billsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 concerningBillsList: action.payload,
+            }
+        case PAGE_CHANGE:
+            return {
+                ...state,
+                page: action.payload
             }
         default:
             return state
