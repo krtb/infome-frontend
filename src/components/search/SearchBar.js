@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { Input } from 'semantic-ui-react'
-
 import { connect } from 'react-redux';
 import { searchTerm, filterText } from '../bills/actions'
+
+// STYLING
+import { Input } from 'semantic-ui-react'
+
 
 class SearchBar extends Component {
 
     onFormSubmit = e => {
         e.preventDefault()
-
-        this.props.filterText(this.props.text, this.props)
+        this.props.filterText(this.props.text, this.props.initialBillList)
     }
 
   
@@ -17,14 +18,16 @@ class SearchBar extends Component {
         
         return (
             <form className="ui form" onSubmit={this.onFormSubmit} >
-            <Input 
-                value={this.props.text || ''} 
-                onChange={this.props.searchTerm}
-                action={{color: 'teal'}} 
-                label={{ icon: 'asterisk' }} 
-                labelPosition='right corner' 
-                placeholder='Search...' 
-            />
+
+                <Input 
+                    value={this.props.text || ''} 
+                    onChange={this.props.searchTerm}
+                    action={{color: 'teal'}} 
+                    label={{ icon: 'asterisk' }} 
+                    labelPosition='right corner' 
+                    placeholder='Search...' 
+                />
+
             </form>
 
             )
