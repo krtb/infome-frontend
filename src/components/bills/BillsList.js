@@ -19,15 +19,15 @@ const BillsList = (props) => {
         (props.page - 1) * props.itemsPerPage + props.itemsPerPage
     )
     
-    let renderDataNow = () => {
-        return items.map((one) =>{
-            return <Bill 
+    let renderDataNow = () => (
+        items.map((one) =>
+             <Bill 
                 id={one.id} 
                 key={one.bill_number} 
                 one={one}
             />
-        })
-    }
+        )
+    )
 
     return (
         <Fragment>
