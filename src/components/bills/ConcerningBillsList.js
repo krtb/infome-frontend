@@ -13,7 +13,7 @@ const ConcerningBillsList = (props) => {
             <SavedBill 
                 one={one} 
                 id={one.id} 
-                key={one.bill_id} 
+                key={one.bill_number} 
                 list="concerning"
                 listType={props.concerningBillsList} 
             />
