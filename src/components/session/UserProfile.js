@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import AuthWrapper from '../../hocs/AuthWrapper';
 import { updateUserInfo, updateUserProfile, onEditClick } from './actions';
@@ -23,7 +23,7 @@ class UserProfile extends Component {
     render() {
         
         return (
-            <React.Fragment>
+            <Fragment>
             <Form >
                 <Form.Group unstackable widths={2}>
                         <Form.Input name="name" label='User Name' placeholder='User Name' 
@@ -61,7 +61,7 @@ class UserProfile extends Component {
                 <Button onClick={this.onEditClick} name="edit" type="submit">Edit</Button>
                 }
             </Form>
-            </React.Fragment>
+            </Fragment>
         );
     }
 }
