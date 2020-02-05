@@ -55,7 +55,6 @@ const ProductiveBillsList = (props) => {
 }
 
 function mapStateToProps(state){
-    console.log(state.productiveBillsList, 'list')
     return {
         productiveBillsList: state.billsReducer.productiveBillsList
     }
