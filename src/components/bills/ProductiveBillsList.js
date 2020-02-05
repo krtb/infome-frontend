@@ -35,7 +35,6 @@ const ProductiveBillsList = (props) => {
                         <Table.HeaderCell>Delete</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
-                {console.log(props.productiveBillsList, 'props')}
                 <Table.Body>
                     {
                         props.productiveBillsList === undefined || props.productiveBillsList.length === 0 ?
