@@ -92,11 +92,16 @@ export const controlledProfileChanges = (event, userCopy) => async dispatch => {
 }
 
 // (API): POST USER PROFILE CHANGES TO BACKEND API ON SAVE CLICK
-export const editUserProfile = (event, userCopy) => async dispatch => {
+export const editUserProfile = (user) => async dispatch => {
     try {
+        console.log(user, ' edit user profile');
+        
         let userObject = {
             "user": {
-                "name": userCopy.name,
+                "email": user.email,
+                "name": user.name,
+                "political_party": user.political_party,
+                "zip_code": user.zip_code
             }
         }
 
@@ -107,7 +112,7 @@ export const editUserProfile = (event, userCopy) => async dispatch => {
             }
         };
         
-        let postingUser = await infoMeApi.put(`/users/${userCopy.id}`, userObject, axiosConfig)
+        let postingUser = await infoMeApi.put(`/users/${user.id}`, userObject, axiosConfig)
         dispatch({ type: EDIT_USER, payload: userObject })
 
     } catch (error) {
