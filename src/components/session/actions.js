@@ -5,8 +5,8 @@ import {
     SET_CURRENT_USER, 
     LOG_OUT_USER, 
     PROFILE_CHANGE,
-    REQUEST_EDIT,
-    DISCARD_EDIT
+    DISCARD_EDIT,
+    EDIT_USER
 } from './types'
 
 export const authenticatingUser = () => ({ 
@@ -32,7 +32,7 @@ export const loginUser = (name, password) => async dispatch => {
         const data = { user: { name, password } }
 
         const response = await infoMeApi.post('/login', data)
-        const { jwt } = await response.data
+        // const { jwt } = await response.data
         const userJWT = await response.data.jwt
         const userData = await response.data.user
 
@@ -71,37 +71,29 @@ export const createNewUser = (name, password) => async dispatch => {
 }
 
 // REQUEST PROFILE CHANGES || DISCARD CHANGES
-export const onEditClick = (requestEdit, event, userCopy) => async dispatch => {
-
-    if (event.target.name === 'discard'){
-        dispatch({ type: DISCARD_EDIT, payload: !requestEdit })
-    } 
-
-    dispatch({ type: REQUEST_EDIT, payload: !requestEdit })
+export const clearChanges = (requestEdit, event, userCopy) => async dispatch => {
+    // console.log(requestEdit, 'CLEARING')
+    // if (event.target.name === 'clear'){
+        dispatch({ type: DISCARD_EDIT })
+    // } 
+    // dispatch({ type: REQUEST_EDIT, payload: !requestEdit })
 }
 
 // SEND UPDATES TO REDUX STATE && EDIT USER PROFILE
-export const updateUserInfo = (event, userCopy) => async dispatch => {  
-    event.preventDefault()
-
+export const controlledProfileChanges = (event, userCopy) => async dispatch => {  
     const name = event.target.name;
     const value = event.target.value;
 
     const newUserValues = {
-        ...userCopy,
         [name]: value
     };
 
-    dispatch({ type: PROFILE_CHANGE, payload: newUserValues })
-    
+    dispatch({ type: PROFILE_CHANGE, payload: newUserValues }) 
 }
 
 // (API): POST USER PROFILE CHANGES TO BACKEND API ON SAVE CLICK
-export const updateUserProfile = (event, userCopy) => async dispatch => {
-    event.preventDefault()
-
+export const editUserProfile = (event, userCopy) => async dispatch => {
     try {
-
         let userObject = {
             "user": {
                 "name": userCopy.name,
@@ -116,12 +108,9 @@ export const updateUserProfile = (event, userCopy) => async dispatch => {
         };
         
         let postingUser = await infoMeApi.put(`/users/${userCopy.id}`, userObject, axiosConfig)
-        // TODO: pull in new user profile info
-        // TODO: display success
-        // TODO: route back to edit page
-        console.log(postingUser, 'in updateUserProfile(), session/actions')
-        
+        dispatch({ type: EDIT_USER, payload: userObject })
+
     } catch (error) {
-        console.log(error, "updateUserProfile(), session/actions")
+        console.log(error, "editUserProfile(), session/actions")
     }
 }
