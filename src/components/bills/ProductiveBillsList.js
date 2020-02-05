@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 
 // COMPONENTS & STYLING
 import SavedBill from './SavedBill'
+import SavedPlaceHolder from '../common/SavedPlaceHolder';
+
 import { Table } from 'semantic-ui-react';
+
 
 const ProductiveBillsList = (props) => {
 
@@ -32,9 +35,18 @@ const ProductiveBillsList = (props) => {
                         <Table.HeaderCell>Delete</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
-                
+                {console.log(props.productiveBillsList, 'props')}
                 <Table.Body>
-                    {productiveBillsArray()}
+                    {
+                        props.productiveBillsList === undefined || props.productiveBillsList.length === 0 ?
+
+                        <SavedPlaceHolder />
+
+                        :
+                    
+                        productiveBillsArray()
+                    
+                    }
                 </Table.Body>
 
             </Table>
@@ -43,6 +55,7 @@ const ProductiveBillsList = (props) => {
 }
 
 function mapStateToProps(state){
+    console.log(state.productiveBillsList, 'list')
     return {
         productiveBillsList: state.billsReducer.productiveBillsList
     }
