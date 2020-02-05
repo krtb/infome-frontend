@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 // COMPONENTS & STYLING
 import SavedBill from './SavedBill';
 import { Table } from 'semantic-ui-react';
+import SavedPlaceHolder from '../common/SavedPlaceHolder';
 
 
 const ConcerningBillsList = (props) => {
@@ -35,7 +36,17 @@ const ConcerningBillsList = (props) => {
                 </Table.Header>
 
                 <Table.Body>
-                    {concerningBillsArray()}
+
+                    {
+                        props.concerningBillsList === undefined || props.concerningBillsList.length === 0  ?
+
+                        <SavedPlaceHolder />
+
+                        :
+                    
+                        concerningBillsArray()
+                    
+                    }
                 </Table.Body>
 
             </Table>
