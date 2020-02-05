@@ -6,7 +6,8 @@ import {
     FAILED_LOGIN,
     PROFILE_CHANGE,
     DISCARD_EDIT,
-    REQUEST_EDIT
+    REQUEST_EDIT,
+    EDIT_USER
 } from './types';
 
 const initialState = {
@@ -16,7 +17,8 @@ const initialState = {
     loggedIn: false,
     authenticatingUser: false,
     failedLogin: false,
-    error: null
+    error: null,
+    edited: false
 }
 
 const userReducer = (state = initialState, action) => {
@@ -59,12 +61,24 @@ const userReducer = (state = initialState, action) => {
         case DISCARD_EDIT:
             return {
                 ...state,
-                userCopy: {...state.user}
+                user: state.userCopy
             }
         case PROFILE_CHANGE:
+
+            let merged = {...state.user, ...action.payload}
+
             return {
                 ...state,
-                userCopy: action.payload
+                user: merged
+            }
+        case EDIT_USER:
+            
+            let mergedEdit = { ...state.user, ...action.payload }
+
+            return {
+                ...state,
+                userCopy: mergedEdit,
+                user: mergedEdit
             }
         default:
             return state
