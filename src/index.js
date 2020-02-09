@@ -13,39 +13,12 @@ import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-const loadState = () => {
-    try {
-        const serializedState = localStorage.getItem('state');
-        if (serializedState === null) {
-            return undefined;
-        }
-        return JSON.parse(serializedState);
-    } catch (e) {
-        return undefined;
-    }
-};
-
-const saveState = (state) => {
-    try {
-        const serializedState = JSON.stringify(state);
-        localStorage.setItem('state', serializedState);
-    } catch (e) {
-        console.log(e, 'error in index.js')
-    }
-};
-
 const rootReducer = combineReducers(reducers);
-const peristedState = loadState();
 
 const store = createStore(
     rootReducer,
-    peristedState,
-    composeWithDevTools(applyMiddleware(thunk)
-    ));
-
-store.subscribe(() => {
-    saveState(store.getState());
-});
+    composeWithDevTools(applyMiddleware(thunk))
+);
 
 ReactDOM.render(
     <Provider store={store}>
