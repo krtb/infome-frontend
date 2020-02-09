@@ -13,9 +13,9 @@ export const authenticatingUser = () => ({
     type: AUTHENTICATING_USER 
 })
 
-export const setCurrentUser = userData => ({
+export const setCurrentUser = user => ({
     type: SET_CURRENT_USER,
-    payload: userData
+    payload: user
 })
 
 export const logOutUser = () => async dispatch => {
@@ -27,27 +27,40 @@ export const logOutUser = () => async dispatch => {
 export const loginUser = (name, password) => async dispatch => {
     
     try {
+        // JSON.STRINGIFY USER?
         dispatch(authenticatingUser())
-
-        const data = { user: { name, password } }
-
+        const data = {name, password }
         const response = await infoMeApi.post('/login', data)
-        // const { jwt } = await response.data
-        const userJWT = await response.data.jwt
-        const userData = await response.data.user
-
-        localStorage.setItem('jwt', userJWT)
+        let { jwt, user } = response.data
+        localStorage.setItem('jwt', jwt)
         localStorage.setItem('loggedIn', 'true')
-
-        dispatch(setCurrentUser(userData))
+        dispatch(setCurrentUser(user))
 
     } catch (error) {
         console.log(error, "in loginUser(), session/actions/loginUser")
     }
 }
 
-// (API): CREATE NEW USER
+export const findCurrentUser = () => async dispatch => {
+    // this maintaints user in local storage, while keeping JWT in backend
+    // used in AuthWrapper
+    let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        }
+    };
+
+    const repsonse = await infoMeApi.get('/profile', axiosConfig)
+
+    let { user } = repsonse.data
+
+    dispatch(setCurrentUser(user))
+}
+
 export const createNewUser = (name, password) => async dispatch => {
+    // (API): CREATE NEW USER
     try {
         let userObject = {
             "user": {
@@ -63,15 +76,18 @@ export const createNewUser = (name, password) => async dispatch => {
             }
         };
         
-        infoMeApi.post('/users', userObject, axiosConfig)
+        let new_user = await infoMeApi.post('/users', userObject, axiosConfig)
+        console.log(new_user, '<-- trying to post a new user');
+        return new_user
 
     } catch (error) {
         console.log(error, "in createNewUser(), session/actions")
     }
 }
 
-// REQUEST PROFILE CHANGES || DISCARD CHANGES
 export const clearChanges = (requestEdit, event, userCopy) => async dispatch => {
+    // REQUEST PROFILE CHANGES || DISCARD CHANGES
+
     // console.log(requestEdit, 'CLEARING')
     // if (event.target.name === 'clear'){
         dispatch({ type: DISCARD_EDIT })
@@ -79,8 +95,9 @@ export const clearChanges = (requestEdit, event, userCopy) => async dispatch => 
     // dispatch({ type: REQUEST_EDIT, payload: !requestEdit })
 }
 
-// SEND UPDATES TO REDUX STATE && EDIT USER PROFILE
-export const controlledProfileChanges = (event, userCopy) => async dispatch => {  
+export const controlledProfileChanges = (event, userCopy) => async dispatch => { 
+    // SEND UPDATES TO REDUX STATE && EDIT USER PROFILE
+
     const name = event.target.name;
     const value = event.target.value;
 
@@ -91,8 +108,9 @@ export const controlledProfileChanges = (event, userCopy) => async dispatch => {
     dispatch({ type: PROFILE_CHANGE, payload: newUserValues }) 
 }
 
-// (API): POST USER PROFILE CHANGES TO BACKEND API ON SAVE CLICK
 export const editUserProfile = (user) => async dispatch => {
+    // (API): POST USER PROFILE CHANGES TO BACKEND API ON SAVE CLICK
+
     try {
         console.log(user, ' edit user profile');
         
