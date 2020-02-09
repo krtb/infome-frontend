@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteBill } from './actions';
+import { deleteBill, deleteBillApiRequest } from './actions';
 
 import { Table } from 'semantic-ui-react'
 
@@ -9,6 +9,7 @@ const SavedBill = (props) => {
 
     let handleDeleteClick = () => {
         props.deleteBill(props, props.one.bill_number, props )
+        props.deleteBillApiRequest(props)
     }
 
     return (
@@ -25,4 +26,4 @@ const SavedBill = (props) => {
     );
 }
 
-export default connect(null, {deleteBill} )(SavedBill);
+export default connect(null, { deleteBill, deleteBillApiRequest} )(SavedBill);
