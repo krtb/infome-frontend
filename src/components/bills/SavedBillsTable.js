@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {fetchSavedBills} from './actions';
 import AuthWrapper from '../../hocs/AuthWrapper';
 
 // TODO: combine these into 'BillHeaders' component
@@ -8,6 +10,10 @@ import ProductiveBillsList from './ProductiveBillsList';
 import ConcerningBillsList from './ConcerningBillsList'
 
 class SavedBillsTable extends Component {
+
+    componentDidMount() {
+        this.props.fetchSavedBills()
+    }
 
     render() {
 
@@ -25,4 +31,4 @@ class SavedBillsTable extends Component {
     }
 }
 
-export default AuthWrapper(SavedBillsTable);
+export default AuthWrapper(connect(null, {fetchSavedBills})(SavedBillsTable));
