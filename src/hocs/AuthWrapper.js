@@ -8,9 +8,7 @@ const AuthWrapper = (WrappedComponent) => {
     // AUTHED COMPONENT
     class AuthorizedComponent extends React.Component {
         componentDidMount() {
-            if (localStorage.getItem('jwt') && !this.props.loggedIn) {
-                this.props.setCurrentUser()
-            }
+            if (localStorage.getItem('jwt') && !this.props.loggedIn) this.props.findCurrentUser()
         }
 
         render() {
