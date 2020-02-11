@@ -9,6 +9,8 @@ import {
     DELETE_PRODUCTIVE_BILL,
     DELETE_CONCERNING_BILL,
     PAGE_CHANGE,
+    UPDATE_POSITIVE_SAVED_BILLS,
+    UPDATE_NEGATIVE_SAVED_BILLS,
     UPDATE_SAVED_BILLS
     } from './types'
 
@@ -32,10 +34,11 @@ export const fetchBills = () => async dispatch => {
     };
 
     const response = await infoMeApi.get('/bills', axiosConfig); 
+
     const listOfBills = await response.data.bills
 
-    let nullValuesRemoved = removeNullValues(listOfBills)    
-
+    let nullValuesRemoved = removeNullValues(listOfBills) 
+       
     dispatch({ type: FETCH_BILLS, payload: nullValuesRemoved})
 
 };
@@ -50,9 +53,23 @@ export const fetchSavedBills = () => async dispatch => {
     };
 
     let updated_saved_bills = await infoMeApi.get('/picked_bills', axiosConfig)    
-    let user_saved_bills = await updated_saved_bills.data.picked_bills
+    let user_saved_bills = await updated_saved_bills.data.picked_bills 
+    let positiveBills = []
+    let negativeBills = []
+
+    user_saved_bills.map((oneBill) => {
+        if (oneBill.user_opinion === 'positive') {
+          return positiveBills.push(oneBill)
+        }
+
+        if (oneBill.user_opinion === 'negative') {
+            return negativeBills.push(oneBill)
+        }
+       
+    })
     
-    dispatch({ type: UPDATE_SAVED_BILLS, payload: user_saved_bills })
+    dispatch({ type: UPDATE_NEGATIVE_SAVED_BILLS, payload: negativeBills })
+    dispatch({ type: UPDATE_POSITIVE_SAVED_BILLS, payload: positiveBills })
 }
 
 export const searchTerm = searchTerm => dispatch => {
@@ -75,14 +92,14 @@ export const filterText = (searchTerm, initialBillList) => async dispatch => {
     dispatch({ type: FIND_BILL, payload: foundBill })
 }
 
-export const fetchPostBill = (pickedBill, user) => async dispatch => {
+export const postSavedBill = (pickedBill, user, billChoice) => async dispatch => {
     // (used in): SavedBillsTable && SearchBills, POST to Bills in RAILS API
     try {
+        
         let user_id = user.id
         
         let billObject = {
             "picked_bill": {
-                'id': pickedBill.id,
                 'user_id': user_id,
                 'api_bill_id': pickedBill.api_bill_id,
                 'bill_number': pickedBill.bill_number,
@@ -92,7 +109,7 @@ export const fetchPostBill = (pickedBill, user) => async dispatch => {
                 'description': pickedBill.description,
                 'legislative_day': pickedBill.legislative_day,
                 'updated_at': pickedBill.updated_at,
-                'user_opinion': pickedBill.user_opinion
+                'user_opinion': billChoice
             }
         }
         
@@ -104,35 +121,16 @@ export const fetchPostBill = (pickedBill, user) => async dispatch => {
             }
         };
 
-
         let postedBill = await infoMeApi.post(`/picked_bills`, billObject, axiosConfig)
         let updated_saved_bills = await infoMeApi.get('/picked_bills')
         let user_saved_bills = await updated_saved_bills.data.picked_bills
-
-        dispatch({ type: UPDATE_SAVED_BILLS, payload: user_saved_bills})
-        return postedBill
+        
     } catch (error) {
-        console.log(error, "fetchPostBill(), bills/actions")
+        console.log(error, "postSavedBill(), bills/actions")
     }
 } 
 
-export const handleBillChoiceClick = (pickedBill, choice, billList) => async dispatch => {
-    // TODO: check where used, remove if no longer necessary
-    // fetchPostBill(pickedBill, user)
-    // (used in): SavedBillsTable && SearchBills
-    
-    // let getIDS = billList.map((aBill) => aBill.bill_number)
-    
-    // if (!getIDS.includes(pickedBill.bill_number) && choice === "isProductive") {
-    //     dispatch({ type: CHOSE_PRODUCTIVE_BILL, payload: pickedBill })
-    // }
-
-    // if (!getIDS.includes(pickedBill.bill_number) && choice === "isConcerning") {
-    //     dispatch({ type: CHOSE_CONCERNING_BILL, payload: pickedBill })
-    // }
-}
-
-export const deleteBillApiRequest = (props) => async dispatch => {
+export const deleteSavedBill = (props) => async dispatch => {
 
     let delete_id = props.one.id
 
@@ -152,7 +150,7 @@ export const deleteBillApiRequest = (props) => async dispatch => {
 export const deleteBill = (listType, billNumber, props) => async dispatch => {
     // (used in): TODO: add where being used
     let delete_id = props.one.id
-    deleteBillApiRequest(delete_id) //callback function above
+    deleteSavedBill(delete_id) //callback function above
 
     let filteredList = listType.listType.filter((singleBill)=> {
         return singleBill.bill_number !== billNumber
