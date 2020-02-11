@@ -77,7 +77,7 @@ export const createNewUser = (name, password) => async dispatch => {
         };
         
         let new_user = await infoMeApi.post('/users', userObject, axiosConfig)
-        console.log(new_user, '<-- trying to post a new user');
+        
         return new_user
 
     } catch (error) {
@@ -97,8 +97,8 @@ export const clearChanges = (requestEdit, event, userCopy) => async dispatch => 
 
 export const controlledProfileChanges = (event, userCopy) => async dispatch => { 
     // SEND UPDATES TO REDUX STATE && EDIT USER PROFILE
-
     const name = event.target.name;
+
     const value = event.target.value;
 
     const newUserValues = {
@@ -110,10 +110,7 @@ export const controlledProfileChanges = (event, userCopy) => async dispatch => {
 
 export const editUserProfile = (user) => async dispatch => {
     // (API): POST USER PROFILE CHANGES TO BACKEND API ON SAVE CLICK
-
-    try {
-        console.log(user, ' edit user profile');
-        
+    try {        
         let userObject = {
             "user": {
                 "email": user.email,
