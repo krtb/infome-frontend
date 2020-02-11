@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleBillChoiceClick, fetchPostBill } from './actions';
+import {  postSavedBill } from './actions';
 
 import { Table, Button} from 'semantic-ui-react'
 
 
 class Bill extends Component {
 
-    handleForClick = () => {
-        this.props.handleBillChoiceClick(
-            this.props.one,
-            this.props.isProductive,
-            this.props.productiveBillsList,
-        )
-        
-        this.props.fetchPostBill(this.props.one, this.props.user)
+    handleForClick = (element, { billchoice }) => {
+        this.props.postSavedBill(this.props.one, this.props.user, billchoice)
     }
 
     render(){
@@ -32,12 +26,9 @@ class Bill extends Component {
                 <Table.Cell >{this.props.one.legislative_day}</Table.Cell>
                 <Table.Cell collapsing>
                     <Button.Group>
-                        <Button onClick={this.handleForClick} positive >For</Button>
+                        <Button billchoice={'positive'} onClick={this.handleForClick} positive >For</Button>
                         <Button.Or />
-                        <Button onClick={() => this.props.handleBillChoiceClick(
-                            this.props.one, 
-                            this.props.isConcerning, 
-                            this.props.concerningBillsList)} negative >Against</Button>
+                        <Button billchoice={'negative'} onClick={this.handleForClick} negative >Against</Button>
                     </Button.Group>
                 </Table.Cell>
             </Table.Row>
@@ -48,11 +39,7 @@ class Bill extends Component {
 function maptStateToProps(state) {
     return { 
         user: state.userReducer.user,
-        isProductive: state.billsReducer.isProductive,
-        isConcerning: state.billsReducer.isConcerning,
-        productiveBillsList: state.billsReducer.productiveBillsList,
-        concerningBillsList: state.billsReducer.concerningBillsList
     }
 }
 
-export default connect(maptStateToProps, { handleBillChoiceClick, fetchPostBill })(Bill);
+export default connect(maptStateToProps, {  postSavedBill })(Bill);
