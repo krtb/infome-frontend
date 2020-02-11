@@ -7,7 +7,10 @@ import {
     CHOSE_PRODUCTIVE_BILL,
     DELETE_PRODUCTIVE_BILL,
     DELETE_CONCERNING_BILL,
-    PAGE_CHANGE
+    UPDATE_POSITIVE_SAVED_BILLS,
+    UPDATE_NEGATIVE_SAVED_BILLS,
+    PAGE_CHANGE,
+    UPDATE_SAVED_BILLS
     } from './types';
 
 const initialState = {
@@ -66,6 +69,16 @@ const billsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 page: action.payload
+            }
+        case UPDATE_POSITIVE_SAVED_BILLS:
+            return {
+                ...state,
+                productiveBillsList: action.payload
+            }
+        case UPDATE_NEGATIVE_SAVED_BILLS:
+            return {
+                ...state,
+                concerningBillsList: action.payload
             }
         default:
             return state
