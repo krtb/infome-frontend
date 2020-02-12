@@ -73,11 +73,15 @@ export const createNewUser = (name, password) => async dispatch => {
             headers: {
                 'Content-Type': 'application/json',
                 "Access-Control-Allow-Origin": "*",
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`
             }
         };
         
-        let new_user = await infoMeApi.post('/users', userObject, axiosConfig)
-        
+        let response = await infoMeApi.post('/users', userObject, axiosConfig)
+
+        let new_user = response.data
+
+        dispatch(loginUser(name, password))
         return new_user
 
     } catch (error) {
