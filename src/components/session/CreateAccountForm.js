@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import * as actions from './actions'
 import { connect } from 'react-redux';
+import * as actions from './actions'
+import { Redirect } from 'react-router-dom';
 
 import stateOptions from './statesDB'
 import { Button, Form, Dropdown } from 'semantic-ui-react'
@@ -88,5 +88,11 @@ class CreateAccountForm extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        loggedIn: state.userReducer.loggedIn
+    }
+}
 
-export default connect(null, actions)(CreateAccountForm);
+
+export default connect(mapStateToProps, actions)(CreateAccountForm);
