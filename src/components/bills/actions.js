@@ -101,7 +101,6 @@ export const postSavedBill = (pickedBill, user, billChoice) => async dispatch =>
         let billObject = {
             "picked_bill": {
                 'user_id': user_id,
-                'api_bill_id': pickedBill.api_bill_id,
                 'bill_number': pickedBill.bill_number,
                 'bill_url': pickedBill.bill_url,
                 'chamber': pickedBill.chamber,
@@ -112,7 +111,7 @@ export const postSavedBill = (pickedBill, user, billChoice) => async dispatch =>
                 'user_opinion': billChoice
             }
         }
-        
+
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json',
@@ -122,7 +121,9 @@ export const postSavedBill = (pickedBill, user, billChoice) => async dispatch =>
         };
 
         let postedBill = await infoMeApi.post(`/picked_bills`, billObject, axiosConfig)
+
         let updated_saved_bills = await infoMeApi.get('/picked_bills')
+
         let user_saved_bills = await updated_saved_bills.data.picked_bills
         
     } catch (error) {
