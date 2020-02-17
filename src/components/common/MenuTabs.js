@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { logOutUser } from '../session/actions';
-import { Navbar, Nav, NavDropdown, Button, Form, FormControl } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 
 // import { Button, Menu } from 'semantic-ui-react';
@@ -17,19 +17,19 @@ class MenuTabs extends Component {
     renderDifferentNavigation = () => {
         if (!localStorage.loggedIn) {
             return [
-                <Navbar.Collapse id="basic-navbar-nav">
+                <Navbar.Collapse key='1' id="basic-navbar-nav">
 
-                    <Nav className="mr-auto">
+                    <Nav key='2' className="mr-auto">
 
                         {/* <Nav.Link href="#link">Link</Nav.Link> */}
                     </Nav>
 
-                    <LinkContainer to="/CreateAccountForm" >
-                    <Button variant="outline-success">Creat An Account</Button>
+                    <LinkContainer key='3' to="/CreateAccountForm" >
+                        <Button key='4' variant="outline-info">Creat An Account</Button>
                     </LinkContainer>
 
-                    <LinkContainer to="/login" >
-                        <Button variant="outline-success" onClick={this.handleItemClick}>Log In</Button>
+                    <LinkContainer key='5' to="/login" >
+                        <Button className='login-button' key='6' variant="outline-success" onClick={this.handleItemClick}>Log In</Button>
                     </LinkContainer>
 
                 </Navbar.Collapse>
@@ -37,23 +37,25 @@ class MenuTabs extends Component {
         } else  {
             return [
                 <Fragment>
-                <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Collapse key='7' id="basic-navbar-nav">
 
-                    <Nav className="mr-auto">
-                        <LinkContainer to="/searchbills" >
-                        <Nav.Link href="#link">Search Bills</Nav.Link>
+                        <Nav key='8' className="mr-auto">
+                            <LinkContainer key='9' to="/searchbills" >
+                        <Nav.Link key='10' href="#link">Search Bills</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to="/savedbills" >
-                        <Nav.Link href="#link">My Saved Bills</Nav.Link>
+                        <LinkContainer key='11' to="/savedbills" >
+                            <Nav.Link key='12' href="#link">My Saved Bills</Nav.Link>
                         </LinkContainer>
 
                     </Nav>
+
+                        <LinkContainer key='13' to="/myprofile" >
+                        <Button key='14' variant="outline-info">My Profile</Button>
+                        </LinkContainer>
                     
-                    <Button variant="outline-info">My Profile</Button>
-                    
-                    <LinkContainer to="/" >
-                    <Button variant="outline-success" onClick={this.props.logOutUser}>
+                        <LinkContainer key='15' to="/" >
+                            <Button className='logout-button' key='16' variant="outline-success" onClick={this.props.logOutUser}>
                         Log Out
                     </Button>
                     </LinkContainer>
