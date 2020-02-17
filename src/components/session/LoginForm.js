@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 
 import { loginUser } from '../session/actions'
-import { Button, Form, Segment } from 'semantic-ui-react'
+import {Form, Button} from 'react-bootstrap'
 
 
 class LoginForm extends Component {
@@ -29,35 +29,42 @@ class LoginForm extends Component {
         return this.props.loggedIn ? (
             <Redirect to="/savedbills" />
         ) : (
+                <Fragment>
+                    <div className="login-page">
+                        <Form onSubmit={this.handleLoginSubmit} >
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>User Name</Form.Label>
+                                <Form.Control
+                                    onChange={this.handleChange}
+                                    defaultValue={this.state.username}
+                                    name="username"
+                                    type="username"
+                                    placeholder="Enter email"
+                                />
+                                <Form.Text className="text-muted">
+                                    We'll never share your email with anyone else.
+                    </Form.Text>
+                            </Form.Group>
 
-            <div className="login-page">
-            <Segment inverted>
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control
+                                    onChange={this.handleChange}
+                                    defaultValue={this.state.password}
+                                    name="password"
+                                    type="password"
+                                    placeholder="Enter Password"
+                                />
 
-                <Form onSubmit={this.handleLoginSubmit} inverted>
-                    <Form.Group widths='equal'>
+                            </Form.Group>
 
-                        <Form.Input fluid label='User Name' placeholder='User Name'
-                            name="username"
-                            onChange={this.handleChange}
-                            value={this.state.username}
-                         />
-                         
-                        <Form.Input fluid label='Password' placeholder='Password'
-                            name="password" 
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                        />
+                            <Button variant="primary" type="submit">
+                                Submit
+                        </Button>
 
-                    </Form.Group>
-
-                    <div className="button-holder">
-                        <Button type='submit'>Submit</Button>
+                        </Form>
                     </div>
-
-                </Form>
-
-            </Segment>
-            </div>
+                </Fragment>
 
         );
     }
