@@ -12,6 +12,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+// REACT-BOOTSTRAP
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const rootReducer = combineReducers(reducers);
 
