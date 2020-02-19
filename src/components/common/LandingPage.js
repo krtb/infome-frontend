@@ -5,9 +5,7 @@ class LandingPageContainer extends Component {
 
     render() {
         return (
-            <div className="landing">
                 <Blurb/>
-            </div>
         );
     }
 }
