@@ -70,6 +70,13 @@ margin-right:10px;
   box-sizing: border-box;
 }
 
+/* --------- LOGIN FORM -------- */
+#login-form {
+    border-radius: 10px;
+    padding: 50px;
+    background-color: #FFFFFF;
+}
+
 .login-button, .logout-button{
     margin: 5px;
 }
