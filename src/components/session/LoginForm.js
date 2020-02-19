@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 
 import { loginUser } from '../session/actions'
+
+// STYLING
 import {Form, Button} from 'react-bootstrap'
 
 
@@ -31,7 +33,7 @@ class LoginForm extends Component {
         ) : (
                 <Fragment>
                     <div className="login-page">
-                        <Form onSubmit={this.handleLoginSubmit} >
+                        <Form onSubmit={this.handleLoginSubmit} id="login-form">
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>User Name</Form.Label>
                                 <Form.Control
