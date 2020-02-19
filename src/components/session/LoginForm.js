@@ -39,10 +39,10 @@ class LoginForm extends Component {
                                     defaultValue={this.state.username}
                                     name="username"
                                     type="username"
-                                    placeholder="Enter email"
+                                    placeholder="Enter Username"
                                 />
                                 <Form.Text className="text-muted">
-                                    We'll never share your email with anyone else.
+                                    {/* We'll never share your email with anyone else. */}
                     </Form.Text>
                             </Form.Group>
 
