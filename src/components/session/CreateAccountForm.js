@@ -4,7 +4,8 @@ import * as actions from './actions'
 import { Redirect } from 'react-router-dom';
 
 import stateOptions from './statesDB'
-import { Button, Form, Dropdown } from 'semantic-ui-react'
+// STYLING
+import { Form, Button, Col, Container, Row } from 'react-bootstrap'
 
 class CreateAccountForm extends Component {
     state = {
@@ -16,7 +17,7 @@ class CreateAccountForm extends Component {
     }
 
     handleChange = (e) => {    
-            
+
         const value = e.target.value
 
         this.setState({
@@ -25,8 +26,9 @@ class CreateAccountForm extends Component {
         })
     }
 
-    handleLoginSubmit = () => {
-        // send user properties to redux action creator
+    handleLoginSubmit = (e) => {
+        e.preventDefault()
+        // send user properties to redux action creator        
         this.props.createNewUser(
             this.state.username, 
             this.state.password, 
@@ -47,43 +49,63 @@ class CreateAccountForm extends Component {
         return this.props.loggedIn ? (
             <Redirect to="/savedbills" />
         ) : (
+                <div id="signup-form-container" >
+                    <Form id="signup-form-child" onSubmit={this.handleLoginSubmit}>
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Label>User Name</Form.Label>
+                            <Form.Control
+                                    onChange={this.handleChange}
+                                    defaultValue={this.state.username}
+                                    name="username"
+                                    type="username"
+                                    placeholder="Enter Username"
+                            />
+                        </Form.Group>
 
-            <Form onSubmit={this.handleLoginSubmit}>
+                        <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                onChange={this.handleChange}
+                                defaultValue={this.state.password}
+                                name="password"
+                                type="password"
+                                placeholder="Enter Password"
+                            />
+                        </Form.Group>
+                    </Form.Row>
 
-                <Form.Group unstackable widths={2}>
-                    <Form.Input label='User Name' placeholder='User Name' 
-                        name="username"
-                        onChange={this.handleChange}
-                        value={this.state.username}
-                    />
-                    <Form.Input label='Password' placeholder='Password' 
-                        name="password"
-                        onChange={this.handleChange}
-                        value={this.state.password}
-                    />
-                </Form.Group>
+                    <Form.Row>
 
-                <Form.Group widths={2}>
-                    <Form.Input label='Zip Code' placeholder='Zip Code' 
-                        name="zip_code"
-                        onChange={this.handleChange}
-                        value={this.state.zip_code}
-                    />
-                    <Form.Input label='Political Party' placeholder='Political Party' 
-                        name="political_party"
-                        onChange={this.handleChange}
-                        value={this.state.political_party}
-                    />
-                </Form.Group>
+                        <Form.Group as={Col} controlId="formGridZip">
+                            <Form.Label>Zip Code</Form.Label>
+                            <Form.Control 
+                                    placeholder="zip code" 
+                                    onChange={this.handleChange}
+                                    defaultValue={this.state.zip_code}
+                                    name="zip_code"
+                                    type="zip_code"
+                                    placeholder="Enter Zip Code"
+                            />
+                        </Form.Group>
+                        <Form.Group as={Col} controlId="formGridZip">
+                            <Form.Label>Political Party</Form.Label>
+                            <Form.Control 
+                                placeholder="Political Party"
+                                onChange={this.handleChange}
+                                defaultValue={this.state.political_party}
+                                name="political_party"
+                                type="political_party"
+                                placeholder="Enter Political Party"
+                            />
+                        </Form.Group>
+                    </Form.Row>
 
-                <Dropdown placeholder='State' search selection options={stateOptions} />
-
-                <Form.Checkbox label='I agree to the Terms and Conditions' />
-
-                <Button type='submit'>Submit</Button>
-
-            </Form>
-
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+                </div>
         );
     }
 }
