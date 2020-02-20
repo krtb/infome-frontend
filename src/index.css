@@ -76,6 +76,23 @@ margin-right:10px;
     padding: 50px;
     background-color: #FFFFFF;
 }
+/* ------- SIGNUP FORM */
+#signup-form-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+}
+
+#signup-form-child {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 25px;
+}
+
 
 .login-button, .logout-button{
     margin: 5px;
