@@ -1,39 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchTerm, filterText } from '../bills/actions'
-
-// STYLING
-import { Input } from 'semantic-ui-react'
-
+// Components
+import { searchTerm, filterText } from '../bills/actions';
+// Styling
+import { Form, FormControl, Button } from 'react-bootstrap';
 
 class SearchBar extends Component {
 
     onFormSubmit = e => {
-        e.preventDefault()
-        this.props.filterText(this.props.text, this.props.initialBillList)
+        e.preventDefault();
+        this.props.filterText(this.props.text, this.props.initialBillList);
     }
 
   
     render(){      
         
         return (
-            <form className="ui form" onSubmit={this.onFormSubmit} >
-
-                <Input 
-                    value={this.props.text || ''} 
+            <Form onSubmit={this.onFormSubmit} inline>
+                <FormControl 
+                    className="mr-sm-2" 
+                    type="text" 
+                    placeholder="Search"
                     onChange={this.props.searchTerm}
-                    action={{color: 'teal'}} 
-                    label={{ icon: 'asterisk' }} 
-                    labelPosition='right corner' 
-                    placeholder='Search...' 
+                    defaultValue={this.props.text || ''}
                 />
-
-            </form>
-
+                <Button variant="success">Search</Button>
+            </Form>
             )
     }
 }
-
 
 const mapStateToProps = (state) => {
     
